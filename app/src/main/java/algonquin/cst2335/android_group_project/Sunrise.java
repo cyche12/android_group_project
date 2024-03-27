@@ -7,8 +7,6 @@ package algonquin.cst2335.android_group_project;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.Toast;
-
-        import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
         import algonquin.cst2335.android_group_project.databinding.SunriseSearchBinding;
 
 public class Sunrise extends AppCompatActivity {

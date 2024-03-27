@@ -3,20 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Sunrise_Results">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/savedSearchTermTextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/back_button"
+        android:padding="16dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/recycler_past_search"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
