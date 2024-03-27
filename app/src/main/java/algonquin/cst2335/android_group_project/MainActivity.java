@@ -94,7 +94,7 @@ import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
                     startActivity(new Intent(MainActivity.this, Sunrise.class));
                     return true;
                 } else if (id == R.id.item2) {
-                    startActivity(new Intent(MainActivity.this, Recipe.class));
+                    startActivity(new Intent(MainActivity.this, RecipeSearch.class));
                     return true;
                 } else if (id == R.id.item3) {
                     startActivity(new Intent(MainActivity.this, Dictionary.class)); // Dictionary API class with item3

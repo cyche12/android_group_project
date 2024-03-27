@@ -13,7 +13,10 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+import algonquin.cst2335.android_group_project.databinding.DictionaryBinding;
+import algonquin.cst2335.android_group_project.databinding.SunriseSearchBinding;
+
+public class Dictionary extends AppCompatActivity {
 
     private EditText searchEditText;
     private Button searchButton;
@@ -23,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        DictionaryBinding binding = DictionaryBinding.inflate(getLayoutInflater()); //Binding View to MainActivity//
+
+        setContentView(binding.getRoot());
 
         searchEditText = findViewById(R.id.searchEditText);
         searchButton = findViewById(R.id.searchButton);
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onError(String message) {
                         // Handle error, e.g., show a Toast
-                        Toast.makeText(MainActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Dictionary.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                     }
                 });
             }

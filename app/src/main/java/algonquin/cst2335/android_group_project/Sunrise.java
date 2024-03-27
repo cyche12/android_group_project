@@ -9,13 +9,14 @@ package algonquin.cst2335.android_group_project;
         import android.widget.Toast;
 
         import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
+        import algonquin.cst2335.android_group_project.databinding.SunriseSearchBinding;
 
 public class Sunrise extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        sunrise_search binding = sunrise_search.inflate(getLayoutInflater()); //Binding View to MainActivity//
+        SunriseSearchBinding binding = SunriseSearchBinding.inflate(getLayoutInflater()); //Binding View to MainActivity//
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
 
