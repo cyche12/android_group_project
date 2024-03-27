@@ -12,47 +12,98 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.renderscript.Sampler;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
-
-public class MainActivity extends AppCompatActivity {
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
 
-        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater()); //Binding View to MainActivity//
-        super.onCreate(savedInstanceState);
-        setContentView(binding.getRoot());
+        public class MainActivity extends AppCompatActivity {
 
-        EditText latitudeEditText = findViewById(R.id.y_coordinate); //Finding Latitude EditText Input//
-        EditText longitudeEditText = findViewById(R.id.x_coordinate); //Finding Longitude EditText Input//
+            /** This holds the text at the centre of the screen*/
+            ActivityMainBinding binding;
 
-        Button searchButton = findViewById(R.id.search_button); //Finding Search button//
-        searchButton.setOnClickListener( click -> { //Setting OnClick listener for the search button//
-            String latitudeInputText = latitudeEditText.getText().toString().trim(); //ToString for input text//
-            String longitudeInputText = longitudeEditText.getText().toString().trim(); //ToString for input text//
+            /**
+             * Entry point of the application.
+             *
+             * @param savedInstanceState The saved instance state.
+             */
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
 
-            if (!latitudeInputText.isEmpty() && !longitudeInputText.isEmpty()) { //Correct Search Parameters//
-                Toast.makeText(MainActivity.this, "Searching these coordinates", Toast.LENGTH_SHORT).show();
-                String websiteURL = ("https://api.sunrisesunset.io/json?lat=" + latitudeInputText + "&lng=" + longitudeInputText + "&timezone=UTC&date=today");
-                Intent searchIntent = new Intent(MainActivity.this, SecondActivity.class); //Intent to move to page two//
-                searchIntent.putExtra("websiteURL", websiteURL);
-                startActivity(searchIntent); //Start move to page two//
+                binding = ActivityMainBinding.inflate(getLayoutInflater());
+                setContentView(binding.getRoot());
+
+                //Toolbar toolbar = findViewById(R.id.myToolbar);
+                setSupportActionBar(binding.myToolbar);
+
+                Button btn1 = findViewById(R.id.button1);   // button1 connects to Sunrise/Sunset API
+                Button btn2 = findViewById(R.id.button2);   // button2 connects to Recipe API
+                Button btn3 = findViewById(R.id.button3);   // button3 is for Dictionary API
+                Button btn4 = findViewById(R.id.button4);   // button4 connects to deezer song API
+                btn1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this, Sunrise.class);
+                        startActivity(intent);
+                    }
+                });
+
+                btn2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this, Recipe.class);
+                        startActivity(intent);
+                    }
+                });
+
+                /* Dictionary API component onclick button code*/
+                btn3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this, Dictionary.class);
+                        startActivity(intent);
+                    }
+                });
+                btn4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this, Song.class);
+                        startActivity(intent);
+                    }
+                });
             }
-            else if (!latitudeInputText.isEmpty()) { //Incorrect Latitude Search Parameter//
-                Toast.makeText(MainActivity.this, "Invalid Latitude", Toast.LENGTH_SHORT).show();
-
-            } else if (!longitudeInputText.isEmpty()) { //Incorrect Longitude Search Parameter//
-                Toast.makeText(MainActivity.this, "Invalid Longitude", Toast.LENGTH_SHORT).show();
+            @Override
+            public boolean onCreateOptionsMenu(Menu menu){
+                getMenuInflater().inflate(R.menu.my_menu,menu);
+                return true;
             }
 
-            else { //Incorrect Search Parameters//
-                Toast.makeText(MainActivity.this, "Invalid Search", Toast.LENGTH_SHORT).show();
+            /* Toolbar Icon selection code for each component*/
+            @Override
+            public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.item1) {
+                    startActivity(new Intent(MainActivity.this, Sunrise.class));
+                    return true;
+                } else if (id == R.id.item2) {
+                    startActivity(new Intent(MainActivity.this, Recipe.class));
+                    return true;
+                } else if (id == R.id.item3) {
+                    startActivity(new Intent(MainActivity.this, Dictionary.class)); // Dictionary API class with item3
+                    return true;
+                } else if (id == R.id.item4) {
+                    startActivity(new Intent(MainActivity.this, Song.class));
+                    return true;
+                } else {
+                    return super.onOptionsItemSelected(item);
+                }
             }
-        });
+
+        }
 
 
     }

@@ -5,5 +5,8 @@
     <string name="Longitude_string">Longitude</string>
     <string name="query_button_string">Lookup</string>
     <string name="back_button">New Search</string>
-
+    <string name="Piyalee_Link">Piyalee/s_App</string>
+    <string name="Gabriel_Link">Gabriel/s_App</string>
+    <string name="Shilpi_Link">Shilpi/s_App</string>
+    <string name="Jake_Link">Jake/s_App</string>
 </resources>
