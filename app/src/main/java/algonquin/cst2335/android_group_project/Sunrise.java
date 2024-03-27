@@ -15,7 +15,7 @@ public class Sunrise extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater()); //Binding View to MainActivity//
+        sunrise_search binding = sunrise_search.inflate(getLayoutInflater()); //Binding View to MainActivity//
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
 
