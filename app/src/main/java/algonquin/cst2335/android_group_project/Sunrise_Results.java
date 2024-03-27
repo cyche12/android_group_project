@@ -19,8 +19,6 @@ public class Sunrise_Results extends AppCompatActivity {
         Intent homeIntent = new Intent(Sunrise_Results.this, MainActivity.class);
         String websiteURL = getIntent().getStringExtra("websiteURL");
         Button backButton = binding.backButton;
-        backButton.setOnClickListener( click -> {
-            startActivity(homeIntent);
-        });
+        backButton.setOnClickListener( click -> startActivity(homeIntent));
     }
 }
