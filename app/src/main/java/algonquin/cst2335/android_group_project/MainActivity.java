@@ -27,22 +27,17 @@ import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
     public class MainActivity extends AppCompatActivity {
 
 
-            ActivityMainBinding binding; //Binding the view to the main activity//
+            ActivityMainBinding binding; //creating the view binding for main activity//
 
-            /**
-             * Entry point of the application.
-             *
-             * @param savedInstanceState The saved instance state.
-             */
             @Override
-            protected void onCreate(Bundle savedInstanceState) {
+            protected void onCreate(Bundle savedInstanceState) { //onCreate function for MainActivity
                 super.onCreate(savedInstanceState);
 
-                binding = ActivityMainBinding.inflate(getLayoutInflater());
-                setContentView(binding.getRoot());
+                binding = ActivityMainBinding.inflate(getLayoutInflater()); //Creating view binding for main activity
+                setContentView(binding.getRoot()); // Setting Content view to main activity binding
 
-                Toolbar toolbar = findViewById(R.id.myToolbar);
-                setSupportActionBar(binding.myToolbar);
+                Toolbar toolbar = findViewById(R.id.myToolbar); //Creating the toolbar
+                setSupportActionBar(binding.myToolbar); //Binding toolbar to ActivityMain view
 
                 Button btn1 = findViewById(R.id.button1);   // button1 connects to Sunrise/Sunset API
                 Button btn2 = findViewById(R.id.button2);   // button2 connects to Recipe API
@@ -59,7 +54,7 @@ import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
                 btn2.setOnClickListener(new View.OnClickListener() { //Button 2 OnClickListener moves to Recipe Class//
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(MainActivity.this, Recipe.class);
+                        Intent intent = new Intent(MainActivity.this, RecipeSearch.class);
                         startActivity(intent);
                     }
                 });
@@ -91,16 +86,16 @@ import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
             public boolean onOptionsItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if (id == R.id.item1) {
-                    startActivity(new Intent(MainActivity.this, Sunrise.class));
+                    startActivity(new Intent(MainActivity.this, Sunrise.class)); //Sunrise/Sunset Search API class with item1
                     return true;
                 } else if (id == R.id.item2) {
-                    startActivity(new Intent(MainActivity.this, RecipeSearch.class));
+                    startActivity(new Intent(MainActivity.this, RecipeSearch.class)); //Recipe Search API class with item2
                     return true;
                 } else if (id == R.id.item3) {
                     startActivity(new Intent(MainActivity.this, Dictionary.class)); // Dictionary API class with item3
                     return true;
                 } else if (id == R.id.item4) {
-                    startActivity(new Intent(MainActivity.this, Song.class));
+                    startActivity(new Intent(MainActivity.this, Song.class)); //Song API class with item4
                     return true;
                 } else {
                     return super.onOptionsItemSelected(item);
