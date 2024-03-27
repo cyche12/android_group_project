@@ -7,23 +7,27 @@
 
 package algonquin.cst2335.android_group_project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.renderscript.Sampler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
+import java.util.Dictionary;
 
 import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
-    @Override
+    public class MainActivity extends AppCompatActivity {
 
-        public class MainActivity extends AppCompatActivity {
 
-            /** This holds the text at the centre of the screen*/
-            ActivityMainBinding binding;
+            ActivityMainBinding binding; //Binding the view to the main activity//
 
             /**
              * Entry point of the application.
@@ -37,14 +41,14 @@ import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
                 binding = ActivityMainBinding.inflate(getLayoutInflater());
                 setContentView(binding.getRoot());
 
-                //Toolbar toolbar = findViewById(R.id.myToolbar);
+                Toolbar toolbar = findViewById(R.id.myToolbar);
                 setSupportActionBar(binding.myToolbar);
 
                 Button btn1 = findViewById(R.id.button1);   // button1 connects to Sunrise/Sunset API
                 Button btn2 = findViewById(R.id.button2);   // button2 connects to Recipe API
                 Button btn3 = findViewById(R.id.button3);   // button3 is for Dictionary API
-                Button btn4 = findViewById(R.id.button4);   // button4 connects to deezer song API
-                btn1.setOnClickListener(new View.OnClickListener() {
+                Button btn4 = findViewById(R.id.button4);   // button4 connects to Song API
+                btn1.setOnClickListener(new View.OnClickListener() { //Button 1 OnClickListener moves to Sunrise Class//
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(MainActivity.this, Sunrise.class);
@@ -52,7 +56,7 @@ import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
                     }
                 });
 
-                btn2.setOnClickListener(new View.OnClickListener() {
+                btn2.setOnClickListener(new View.OnClickListener() { //Button 2 OnClickListener moves to Recipe Class//
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(MainActivity.this, Recipe.class);
@@ -60,15 +64,15 @@ import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
                     }
                 });
 
-                /* Dictionary API component onclick button code*/
-                btn3.setOnClickListener(new View.OnClickListener() {
+
+                btn3.setOnClickListener(new View.OnClickListener() { //Button 3 OnClickListener moves to Dictionary Class//
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(MainActivity.this, Dictionary.class);
                         startActivity(intent);
                     }
                 });
-                btn4.setOnClickListener(new View.OnClickListener() {
+                btn4.setOnClickListener(new View.OnClickListener() { //Button 4 OnClickListener moves to Song Class//
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(MainActivity.this, Song.class);
@@ -76,13 +80,13 @@ import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
                     }
                 });
             }
-            @Override
-            public boolean onCreateOptionsMenu(Menu menu){
+
+            public boolean onCreateOptionsMenu(Menu menu){ //Menu Inflater//
                 getMenuInflater().inflate(R.menu.my_menu,menu);
                 return true;
             }
 
-            /* Toolbar Icon selection code for each component*/
+            //Toolbar Icon Selector//
             @Override
             public boolean onOptionsItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
@@ -102,9 +106,4 @@ import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
                     return super.onOptionsItemSelected(item);
                 }
             }
-
-        }
-
-
     }
-}

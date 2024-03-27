@@ -1,3 +1,9 @@
+//Student: Jake Elliott//
+//Student #040732505//
+//Class: CST2335//
+//Group Members: Jake Elliott, Gabriel Hubert, Shilpi Sarkar, Piyalee Mangaraj//
+//Project: Final Group Project//
+//App: Sunrise/Sunset App//
 package algonquin.cst2335.android_group_project;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,10 +32,3 @@ public class ThirdActivity extends AppCompatActivity {
 
     }
 }
-
-//Student: Jake Elliott//
-//Student #040732505//
-//Class: CST2335//
-//Group Members: Jake Elliott, Gabriel Hubert, Shilpi Sarkar, Piyalee Mangaraj//
-//Project: Final Group Project//
-//App: Sunrise/Sunset App//
