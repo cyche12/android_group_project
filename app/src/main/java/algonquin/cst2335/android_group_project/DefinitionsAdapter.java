@@ -12,7 +12,7 @@ import java.util.List;
 
 public class DefinitionsAdapter extends RecyclerView.Adapter<DefinitionsAdapter.ViewHolder> {
 
-    private List<String> definitions;
+    private final List<String> definitions;
 
     public DefinitionsAdapter(List<String> definitions) {
         this.definitions = definitions;

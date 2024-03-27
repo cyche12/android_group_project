@@ -14,12 +14,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 import algonquin.cst2335.android_group_project.databinding.DictionaryBinding;
-import algonquin.cst2335.android_group_project.databinding.SunriseSearchBinding;
 
 public class Dictionary extends AppCompatActivity {
 
     private EditText searchEditText;
-    private Button searchButton;
     private RecyclerView definitionsRecyclerView;
     private DefinitionsAdapter definitionsAdapter;
 
@@ -31,7 +29,7 @@ public class Dictionary extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         searchEditText = findViewById(R.id.searchEditText);
-        searchButton = findViewById(R.id.searchButton);
+        Button searchButton = findViewById(R.id.searchButton);
         definitionsRecyclerView = findViewById(R.id.definitionsRecyclerView);
 
         // Initialize RecyclerView
@@ -41,25 +39,22 @@ public class Dictionary extends AppCompatActivity {
 
         DictionaryApiRequest dictionaryApiRequest = new DictionaryApiRequest(this);
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String word = searchEditText.getText().toString();
-                dictionaryApiRequest.getDefinitions(word, new DictionaryApiRequest.ResponseListener() {
-                    @Override
-                    public void onResponse(List<String> definitions) {
-                        // Update RecyclerView with definitions
-                        definitionsAdapter = new DefinitionsAdapter(definitions);
-                        definitionsRecyclerView.setAdapter(definitionsAdapter);
-                    }
+        searchButton.setOnClickListener(v -> {
+            String word = searchEditText.getText().toString();
+            dictionaryApiRequest.getDefinitions(word, new DictionaryApiRequest.ResponseListener() {
+                @Override
+                public void onResponse(List<String> definitions) {
+                    // Update RecyclerView with definitions
+                    definitionsAdapter = new DefinitionsAdapter(definitions);
+                    definitionsRecyclerView.setAdapter(definitionsAdapter);
+                }
 
-                    @Override
-                    public void onError(String message) {
-                        // Handle error, e.g., show a Toast
-                        Toast.makeText(Dictionary.this, "Error: " + message, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+                @Override
+                public void onError(String message) {
+                    // Handle error, e.g., show a Toast
+                    Toast.makeText(Dictionary.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
     }
