@@ -18,7 +18,7 @@
             android:name=".Sunrise_Results"
             android:exported="false" />
         <activity
-            android:name=".Sunrise"
+            android:name=".Sunrise_Search"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

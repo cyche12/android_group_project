@@ -40,7 +40,7 @@
     Button btn4 = findViewById(R.id.button4);   // button4 connects to Song API
         //Button 1 OnClickListener moves to Sunrise Class//
         btn1.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, Sunrise.class);
+            Intent intent = new Intent(MainActivity.this, Sunrise_Search.class);
                 startActivity(intent);
             });
 
@@ -75,7 +75,7 @@
         int id = item.getItemId();
 
     if (id == R.id.item1) {
-        startActivity(new Intent(MainActivity.this, Sunrise.class)); //Sunrise/Sunset Search API class with item1
+        startActivity(new Intent(MainActivity.this, Sunrise_Search.class)); //Sunrise/Sunset Search API class with item1
             return true;
     } else if (id == R.id.item2) {
         startActivity(new Intent(MainActivity.this, RecipeSearch.class)); //Recipe Search API class with item2
