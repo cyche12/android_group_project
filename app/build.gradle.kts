@@ -6,6 +6,10 @@ android {
     namespace = "algonquin.cst2335.android_group_project"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "algonquin.cst2335.android_group_project"
         minSdk = 27
@@ -37,4 +41,5 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.android.volley:volley:1.2.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 }
