@@ -14,7 +14,6 @@
     import android.view.Menu;
     import android.view.MenuItem;
     import android.widget.Button;
-    import android.widget.Toolbar;
     import java.util.Dictionary;
     import algonquin.cst2335.android_group_project.databinding.ActivityMainBinding;
 
@@ -28,8 +27,6 @@
 
     ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater()); //Creating view binding for main activity
     setContentView(binding.getRoot()); // Setting Content view to main activity binding
-
-    Toolbar myToolbar = findViewById(R.id.myToolbar); //Creating the toolbar
 
 
     setSupportActionBar(binding.myToolbar); //Binding toolbar to ActivityMain view
