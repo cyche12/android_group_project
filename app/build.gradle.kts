@@ -36,4 +36,21 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    // Volley for network requests
+    implementation ("com.android.volley:volley:1.2.1")
+
+// Room for database operations
+    implementation ("androidx.room:room-runtime:2.3.0")
+    annotationProcessor ("androidx.room:room-compiler:2.3.0") // For Java
+
+
+// Lifecycle components for LiveData
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+
+// RecyclerView for displaying lists
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+
+
+
 }

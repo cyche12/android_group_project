@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">android_group_project</string>
+    <string name="app_name1">DeezerSongSearch</string>
+    <string name="search_hint">Enter artist name</string>
+    <string name="search">Search</string>
+    <string name="artist_image">Artist Image</string>
+    <string name="artist_name">Artist Name</string>
+    <string name="title" />
+    <string name="album_cover" />
+    <string name="album_name" />
+    <string name="duration" />
 </resources>
