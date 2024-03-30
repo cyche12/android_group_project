@@ -12,6 +12,8 @@
     import androidx.appcompat.widget.Toolbar;
 
     import android.content.Intent;
+    import android.graphics.drawable.AdaptiveIconDrawable;
+    import android.graphics.drawable.Drawable;
     import android.os.Bundle;
     import android.view.Menu;
     import android.view.MenuItem;
@@ -37,6 +39,7 @@
     Button btn2 = findViewById(R.id.button2);   // button2 connects to Recipe API
     Button btn3 = findViewById(R.id.button3);   // button3 is for Dictionary API
     Button btn4 = findViewById(R.id.button4);   // button4 connects to Song API
+
         //Button 1 OnClickListener moves to Sunrise Class//
         btn1.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, Sunrise_Search.class);
@@ -73,20 +76,20 @@
 
         int id = item.getItemId();
 
-    if (id == R.id.item1) {
-        startActivity(new Intent(MainActivity.this, Sunrise_Search.class)); //Sunrise/Sunset Search API class with item1
+        if (id == R.id.item1) {
+            startActivity(new Intent(MainActivity.this, Sunrise_Search.class)); //Sunrise/Sunset Search API class with item1
             return true;
-    } else if (id == R.id.item2) {
-        startActivity(new Intent(MainActivity.this, RecipeSearch.class)); //Recipe Search API class with item2
+        } else if (id == R.id.item2) {
+            startActivity(new Intent(MainActivity.this, RecipeSearch.class)); //Recipe Search API class with item2
             return true;
-    } else if (id == R.id.item3) {
-        startActivity(new Intent(MainActivity.this, Dictionary.class)); // Dictionary API class with item3
+        } else if (id == R.id.item3) {
+            startActivity(new Intent(MainActivity.this, Dictionary.class)); // Dictionary API class with item3
             return true;
-    } else if (id == R.id.item4) {
-        startActivity(new Intent(MainActivity.this, Song.class)); //Song API class with item4
+        } else if (id == R.id.item4) {
+            startActivity(new Intent(MainActivity.this, Song.class)); //Song API class with item4
             return true;
-    } else {
-        return super.onOptionsItemSelected(item);
-    }
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
     }

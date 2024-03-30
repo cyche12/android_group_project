@@ -1,10 +1,3 @@
-//Student: Jake Elliott//
-//Student #040732505//
-//Class: CST2335//
-//Group Members: Jake Elliott, Gabriel Hubert, Shilpi Sarkar, Piyalee Mangaraj//
-//Project: Final Group Project//
-//App: Sunrise/Sunset App//
-
 package algonquin.cst2335.android_group_project;
 
 import android.content.Intent;
@@ -12,8 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,17 +14,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import algonquin.cst2335.android_group_project.databinding.SunriseResultBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import algonquin.cst2335.android_group_project.databinding.SunriseResultBinding;
 
 public class Sunrise_Results extends AppCompatActivity {
 
@@ -43,18 +32,13 @@ public class Sunrise_Results extends AppCompatActivity {
         SunriseResultBinding binding = SunriseResultBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         Intent intent = getIntent();
         String websiteURL = intent.getStringExtra("websiteURL");
         String latitude = intent.getStringExtra("latitude");
         String longitude = intent.getStringExtra("longitude");
         Button backButton = findViewById(R.id.back_button);
         Intent backIntent = new Intent(Sunrise_Results.this, Sunrise_Search.class);
-        backButton.setOnClickListener( click -> {
-            startActivity(backIntent);
-        });
-
-
+        backButton.setOnClickListener(click -> startActivity(backIntent));
 
         RecyclerView resultsRecyclerView = findViewById(R.id.results_recycler_view);
         resultsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -62,8 +46,6 @@ public class Sunrise_Results extends AppCompatActivity {
         resultsRecyclerView.setAdapter(resultsAdapter);
         fetchSunriseSunsetData(websiteURL);
     }
-
-
 
     private void fetchSunriseSunsetData(String websiteURL) {
         OkHttpClient client = new OkHttpClient();
@@ -94,9 +76,11 @@ public class Sunrise_Results extends AppCompatActivity {
                         newData.add("Sunset: " + sunset);
                         SharedPreferences dataStorage = getSharedPreferences("dataEntered", MODE_PRIVATE);
                         SharedPreferences.Editor editor = dataStorage.edit();
-                        editor.putString("websiteURL", websiteURL);
-                        editor.putString("2", sunrise);
-                        editor.putString("3", sunset);
+                        String latitude = dataStorage.getString("latitude", "");
+                        String longitude = dataStorage.getString("longitude", "");
+
+                        editor.putString("latitude", latitude);
+                        editor.putString("longitude", longitude);
                         editor.apply();
 
                         // Update ResultsAdapter on the UI thread
