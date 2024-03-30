@@ -3,6 +3,7 @@ package algonquin.cst2335.android_group_project;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,6 +41,11 @@ public class Sunrise_Results extends AppCompatActivity {
         String websiteURL = intent.getStringExtra("websiteURL");
         String latitude = intent.getStringExtra("latitude");
         String longitude = intent.getStringExtra("longitude");
+        Button backButton = findViewById(R.id.back_button);
+        Intent backIntent = new Intent(Sunrise_Results.this, Sunrise_Search.class);
+        backButton.setOnClickListener( click -> {
+            startActivity(backIntent);
+        });
 
 
 
