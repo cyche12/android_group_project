@@ -30,7 +30,7 @@ public class SongAPI extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.api_song);
 
         searchInput = findViewById(R.id.etSearchInput);
         searchButton = findViewById(R.id.btnSearch);

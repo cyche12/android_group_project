@@ -28,14 +28,20 @@ public class Sunrise_Search extends AppCompatActivity {
         setContentView(binding.getRoot());
         EditText latitudeEditText = findViewById(R.id.y_coordinate);
         EditText longitudeEditText = findViewById(R.id.x_coordinate);
+        Button homeButton = findViewById(R.id.home_button);
         Button searchButton = findViewById(R.id.search_button);
         Sunrise_Data sunriseData = new Sunrise_Data();
         sunriseData.x_coordinate = String.valueOf(latitudeEditText);
         sunriseData.y_coordinate = String.valueOf(longitudeEditText);
-
+        Intent homeIntent = new Intent(Sunrise_Search.this, MainActivity.class);
         SharedPreferences dataStorage = getSharedPreferences("dataEntered", MODE_PRIVATE);
         String latitude = dataStorage.getString("latitude", String.valueOf(latitudeEditText));
         String longitude = dataStorage.getString("longitude", String.valueOf(longitudeEditText));
+
+        homeButton.setOnClickListener(click -> {
+            startActivity(homeIntent);
+        });
+
 
         searchButton.setOnClickListener(click -> {
             String latitudeInputText = latitudeEditText.getText().toString().trim();

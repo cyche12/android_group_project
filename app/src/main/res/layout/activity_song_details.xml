@@ -17,7 +17,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_album_placeholder" /> <!-- Replace with a placeholder or actual image URL -->
+            app:srcCompat="@drawable/cat_5646889_640" /> <!-- Replace with a placeholder or actual image URL -->
 
         <TextView
             android:id="@+id/songTitle"
