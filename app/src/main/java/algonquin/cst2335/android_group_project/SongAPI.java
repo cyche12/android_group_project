@@ -19,7 +19,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class SongAPI extends AppCompatActivity {
 
     private EditText searchInput;
     private Button searchButton;
