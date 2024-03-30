@@ -10,10 +10,7 @@
     import androidx.annotation.NonNull;
     import androidx.appcompat.app.AppCompatActivity;
     import androidx.appcompat.widget.Toolbar;
-
     import android.content.Intent;
-    import android.graphics.drawable.AdaptiveIconDrawable;
-    import android.graphics.drawable.Drawable;
     import android.os.Bundle;
     import android.view.Menu;
     import android.view.MenuItem;
@@ -60,7 +57,7 @@
         });
         //Button 4 OnClickListener moves to Song Class//
         btn4.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, Song.class);
+            Intent intent = new Intent(MainActivity.this, SongAPI.class);
                 startActivity(intent);
         });
     }
@@ -86,7 +83,7 @@
             startActivity(new Intent(MainActivity.this, Dictionary.class)); // Dictionary API class with item3
             return true;
         } else if (id == R.id.item4) {
-            startActivity(new Intent(MainActivity.this, Song.class)); //Song API class with item4
+            startActivity(new Intent(MainActivity.this, SongAPI.class)); //Song API class with item4
             return true;
         } else {
             return super.onOptionsItemSelected(item);

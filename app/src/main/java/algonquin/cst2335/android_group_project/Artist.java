@@ -20,5 +20,3 @@ public class Artist {
     public String getPictureMedium() { return pictureMedium; }
     public String getTracklist() { return tracklist; }
 }
-
-
