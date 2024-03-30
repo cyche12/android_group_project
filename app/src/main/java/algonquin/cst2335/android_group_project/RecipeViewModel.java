@@ -6,5 +6,5 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 
 public class RecipeViewModel extends ViewModel {
-    public MutableLiveData<ArrayList<String>> messages = new MutableLiveData< >();
+    public MutableLiveData<ArrayList<RecipeReturn>> recipes = new MutableLiveData<>(new ArrayList<>());
 }
