@@ -9,6 +9,8 @@
 
     import androidx.annotation.NonNull;
     import androidx.appcompat.app.AppCompatActivity;
+    import androidx.appcompat.widget.Toolbar;
+
     import android.content.Intent;
     import android.os.Bundle;
     import android.view.Menu;
@@ -30,7 +32,7 @@
 
 
     setSupportActionBar(binding.myToolbar); //Binding toolbar to ActivityMain view
-
+    Toolbar myToolbar = findViewById(R.id.myToolbar); //Finding toolbar view
     Button btn1 = findViewById(R.id.button1);   // button1 connects to Sunrise/Sunset API
     Button btn2 = findViewById(R.id.button2);   // button2 connects to Recipe API
     Button btn3 = findViewById(R.id.button3);   // button3 is for Dictionary API

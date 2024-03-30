@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="item1" type="id">Sunrise.class</item>
-    <item name="item2" type="id">Recipe.class</item>
-    <item name="item3" type="id">Dictionary.class</item>
-    <item name="item4" type="id">Song.class</item>
-    <item name="my_toolbar" type="id">my_toolbar</item>
-</resources>
