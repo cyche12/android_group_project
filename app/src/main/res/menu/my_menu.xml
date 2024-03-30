@@ -4,20 +4,26 @@
 
     <item
         android:id="@+id/item1"
-        android:title="@string/Jake_Link" />
+        android:icon="@drawable/cat_5646889_640"
+        android:title="@string/Jake_Link"
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/item2"
-        android:icon="@drawable/cat_5646889_640"
         android:title="@string/Shilpi_Link"
-        app:showAsAction="ifRoom"/>
+        android:icon="@drawable/cat_5646889_640"
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/item3"
-        android:title="@string/Piyalee_Link" />
+        android:title="@string/Piyalee_Link"
+        android:icon="@drawable/cat_5646889_640"
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/item4"
-        android:title="@string/Gabriel_Link" />
+        android:title="@string/Gabriel_Link"
+        app:showAsAction="always"
+        android:icon="@drawable/cat_5646889_640" />
 
 </menu>

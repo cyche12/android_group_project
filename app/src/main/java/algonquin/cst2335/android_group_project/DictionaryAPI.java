@@ -14,7 +14,7 @@ import java.util.List;
 
 import algonquin.cst2335.android_group_project.databinding.DictionaryBinding;
 
-public class Dictionary extends AppCompatActivity {
+public class DictionaryAPI extends AppCompatActivity {
 
     private EditText searchEditText;
     private RecyclerView definitionsRecyclerView;
@@ -51,7 +51,7 @@ public class Dictionary extends AppCompatActivity {
                 @Override
                 public void onError(String message) {
                     // Handle error, e.g., show a Toast
-                    Toast.makeText(Dictionary.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DictionaryAPI.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                 }
             });
         });

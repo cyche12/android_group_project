@@ -21,7 +21,6 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultVi
     private final List<String> data = new ArrayList<>();
 
     public void updateResults(List<String> newData) {
-        data.clear();
         data.addAll(newData);
         notifyDataSetChanged();
     }
@@ -49,6 +48,9 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ResultVi
         public ResultViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(android.R.id.text1);
+
         }
     }
 }
+
+

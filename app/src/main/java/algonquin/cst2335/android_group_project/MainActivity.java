@@ -36,30 +36,23 @@
     Button btn2 = findViewById(R.id.button2);   // button2 connects to Recipe API
     Button btn3 = findViewById(R.id.button3);   // button3 is for Dictionary API
     Button btn4 = findViewById(R.id.button4);   // button4 connects to Song API
+        Intent SunIntent = new Intent(MainActivity.this, Sunrise_Search.class);
+        Intent RecipeIntent = new Intent(MainActivity.this, RecipeSearch.class);
+        Intent Dictionaryintent = new Intent(MainActivity.this, DictionaryAPI.class);
+        Intent Songintent = new Intent(MainActivity.this, SongAPI.class);
+
 
         //Button 1 OnClickListener moves to Sunrise Class//
-        btn1.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, Sunrise_Search.class);
-                startActivity(intent);
-            });
+        btn1.setOnClickListener(click -> startActivity(SunIntent));
 
         //Button 2 OnClickListener moves to Recipe Class//
-        btn2.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, RecipeSearch.class);
-                startActivity(intent);
-             });
+        btn2.setOnClickListener(click -> startActivity(RecipeIntent));
 
 
         //Button 3 OnClickListener moves to Dictionary Class//
-        btn3.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, Dictionary.class);
-                startActivity(intent);
-        });
+        btn3.setOnClickListener(click -> startActivity(Dictionaryintent));
         //Button 4 OnClickListener moves to Song Class//
-        btn4.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, SongAPI.class);
-                startActivity(intent);
-        });
+        btn4.setOnClickListener(click -> startActivity(Songintent));
     }
 
     public boolean onCreateOptionsMenu(Menu menu){ //Menu Inflater//
