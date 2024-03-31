@@ -20,6 +20,15 @@
         <activity
             android:name=".Sunrise_Search"
             android:exported="true" />
+        <activity android:name=".SongAPI"
+            android:exported="true" />
+        <activity android:name=".DictionaryAPI"
+            android:exported="true"/>
+        <activity android:name=".RecipeSearch"
+            android:exported="true"/>
+
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
