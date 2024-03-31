@@ -102,6 +102,7 @@ public class RecipeSearch extends AppCompatActivity {
                             }
                         });
                 MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+
             }
         });
 
