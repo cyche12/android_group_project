@@ -12,5 +12,5 @@ public interface SunDao {
     void insert(Sunrise_Data sunriseData);
 
     @Query("SELECT * FROM sunrise_data")
-    List<SunDatabase> getAllSunriseData();
+    List<Sunrise_Data> getAllSunriseData();
 }
