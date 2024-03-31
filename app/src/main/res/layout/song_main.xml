@@ -7,6 +7,7 @@
     tools:context=".SongAPI">
 
 
+
     <EditText
         android:id="@+id/etSearchInput"
         android:layout_width="0dp"
@@ -26,7 +27,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/etSearchInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/etSearchInput"
-        app:layout_constraintTop_toTopOf="@+id/etSearchInput" />
+        app:layout_constraintTop_toTopOf="@+id/etSearchInput"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSongs"
@@ -36,7 +38,17 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSearchInput" />
+        app:layout_constraintTop_toBottomOf="@+id/etSearchInput"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="194dp"
+        android:layout_height="158dp"
+        android:src="@drawable/song"
+        app:layout_constraintTop_toBottomOf="@+id/etSearchInput"
+        tools:layout_editor_absoluteX="211dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

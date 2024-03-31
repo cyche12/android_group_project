@@ -23,6 +23,7 @@
             android:id="@+id/songTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:contentDescription="Song Tittle"
             android:layout_marginTop="16dp"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -35,6 +36,7 @@
             android:id="@+id/songAlbumName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:contentDescription="Album Name"
             android:layout_marginTop="8dp"
             android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@id/songTitle"
@@ -46,12 +48,14 @@
             android:id="@+id/songDuration"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="Duration"
+            android:text="@string/duration"
             android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@id/songAlbumName"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/duration" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/songAlbumName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
