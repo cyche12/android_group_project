@@ -4,4 +4,6 @@
     <string name="search_button">Search</string>
     <string name="title">Title</string>
     <string name="recipe_id">Recipe ID</string>
+    <string name="summary">Summary</string>
+    <string name="recipe_URL">Spoonacular Source Url</string>
 </resources>

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -46,6 +47,11 @@ public class RecipeSearch extends AppCompatActivity {
     private RecyclerView.Adapter myAdapter;
     ArrayList<RecipeReturn> recipes;
     RecipeViewModel recipeModel;
+
+    private void clearRecyclerView() {
+        recipes.clear();
+        myAdapter.notifyDataSetChanged();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,10 +66,8 @@ public class RecipeSearch extends AppCompatActivity {
         binding = ActivityRecipeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //QUEUE
-        RequestQueue queue = MySingleton.getInstance(this.getApplicationContext()).getRequestQueue();
-
         binding.searchButton.setOnClickListener(click ->{
+            clearRecyclerView();
             String searchText = binding.searchBar.getText().toString().trim();
             if (!searchText.isEmpty()) {
                 String url = "https://api.spoonacular.com/recipes/complexSearch?query=" + searchText + "&apiKey=3eede3908bc14abfa1619421c6fcefea";
@@ -138,12 +142,26 @@ public class RecipeSearch extends AppCompatActivity {
         TextView titleText;
         TextView idText;
         ImageView recipeImage;
+        Context context;
 
         public MyRowHolder(@NonNull View itemView) {
             super(itemView);
             titleText = itemView.findViewById(R.id.recipeTitle);
             idText = itemView.findViewById(R.id.recipeID);
             recipeImage = itemView.findViewById(R.id.imageView);
+            context = itemView.getContext(); // Get the context of the item view
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Get the recipe ID from the clicked item
+                    String recipeId = idText.getText().toString();
+
+                    // Start the new activity and pass the recipe ID as an extra
+                    Intent intent = new Intent(context, RecipeDetails.class);
+                    intent.putExtra("recipeId", recipeId);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
