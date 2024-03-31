@@ -1,4 +1,4 @@
-package algonquin.cst2335.android_group_project;
+package algonquin.cst2335.android_group_project.Dictionary;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +33,10 @@ public class DefinitionsAdapter extends RecyclerView.Adapter<DefinitionsAdapter.
     @Override
     public int getItemCount() {
         return definitions.size();
+    }
+
+    public void setDefinitions(List<String> currentDefinitions) {
+        this.definitions = currentDefinitions;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

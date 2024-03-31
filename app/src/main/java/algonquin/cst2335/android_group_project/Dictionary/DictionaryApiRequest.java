@@ -1,4 +1,4 @@
-package algonquin.cst2335.android_group_project;
+package algonquin.cst2335.android_group_project.Dictionary;
 import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
