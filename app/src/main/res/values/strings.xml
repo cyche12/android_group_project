@@ -1,5 +1,16 @@
 <resources>
-    <string name="app_name">android_group_project</string>
-    <string name="search_hint">Please enter word for defination</string>
+    <string name="app_name">Android Group Project</string>
+    <string name="title_name">Sunrise/Sunset App</string>
+    <string name="Latitude_string">Latitude</string>
+    <string name="Longitude_string">Longitude</string>
+    <string name="query_button_string">Lookup</string>
+    <string name="back_button">New Search</string>
+    <string name="Piyalee_Link">Piyalee/s_App</string>
+    <string name="Gabriel_Link">Gabriel/s_App</string>
+    <string name="Shilpi_Link">Shilpi/s_App</string>
+    <string name="Jake_Link">Jake/s_App</string>
+    <string name="search_hint">Please enter word for the definition</string>
     <string name="search_button_text">Submit</string>
+    <string name="dictionary">Dictionary</string>
+    <string name="view_saved_searches_button_text">Past Search Results</string>
 </resources>
