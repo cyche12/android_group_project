@@ -15,7 +15,6 @@
     <string name="view_saved_searches_button_text">Past Search Results</string>
     <string name="artist_image">Artist Image</string>
     <string name="artist_name">Artist Name</string>
-    <string name="title" />
     <string name="album_cover" />
     <string name="album_name" />
     <string name="duration" />
@@ -24,4 +23,11 @@
     <string name="search">Search</string>
     <string name="main_page">Home</string>
     <string name="songSearch">Search new Song</string>
+    <string name="search_bar">Search Recipe</string>
+    <string name="search_button">Search</string>
+    <string name="title">Title</string>
+    <string name="recipe_id">Recipe ID</string>
+    <string name="summary">Summary</string>
+    <string name="recipe_URL">Spoonacular Source Url</string>
+
 </resources>
