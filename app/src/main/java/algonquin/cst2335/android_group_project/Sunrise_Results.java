@@ -9,12 +9,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import algonquin.cst2335.android_group_project.databinding.SunriseResultBinding;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class Sunrise_Results extends AppCompatActivity {
 
@@ -53,20 +62,42 @@ public class Sunrise_Results extends AppCompatActivity {
     }
 
     private void fetchSunriseSunsetData(String latitude, String longitude) {
-        // Simulate fetching sunrise and sunset data from API
-        String sunriseTime = "6:30 AM";
-        String sunsetTime = "6:30 PM";
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("https://api.sunrise-sunset.org/json?lat=" + latitude + "&lng=" + longitude + "&date=today")
+                .build();
 
-        // Update UI with sunrise and sunset data
-        List<String> newData = new ArrayList<>();
-        newData.add("Latitude: " + latitude + ", Longitude: " + longitude);
-        newData.add("Sunrise: " + sunriseTime);
-        newData.add("Sunset: " + sunsetTime);
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
 
-        resultsAdapter.addNewResults(newData);
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        JSONObject results = jsonObject.getJSONObject("results");
+                        String sunriseTime = results.getString("sunrise");
+                        String sunsetTime = results.getString("sunset");
 
-        // Save new search results to Room database
-        saveToRoomDatabase(latitude, longitude, sunriseTime, sunsetTime);
+                        // Update UI with sunrise and sunset data
+                        List<String> newData = new ArrayList<>();
+                        newData.add("Latitude: " + latitude + ", Longitude: " + longitude);
+                        newData.add("Sunrise: " + sunriseTime);
+                        newData.add("Sunset: " + sunsetTime);
+
+                        runOnUiThread(() -> resultsAdapter.addNewResults(newData));
+
+                        // Save new search results to Room database
+                        saveToRoomDatabase(latitude, longitude, sunriseTime, sunsetTime);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
     private void loadAndDisplayPastSearchResults() {
