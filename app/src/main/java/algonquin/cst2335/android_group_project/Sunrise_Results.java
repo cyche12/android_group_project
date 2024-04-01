@@ -14,6 +14,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import algonquin.cst2335.android_group_project.databinding.SunriseResultBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -23,7 +26,7 @@ import okhttp3.Response;
 
 public class Sunrise_Results extends AppCompatActivity {
 
-    private ResultsAdapter resultsAdapter;
+    private SunResultsAdapter resultsAdapter;
     private String latitude;
     private String longitude;
 
@@ -44,7 +47,7 @@ public class Sunrise_Results extends AppCompatActivity {
 
         RecyclerView resultsRecyclerView = binding.resultsRecyclerView;
         resultsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        resultsAdapter = new ResultsAdapter();
+        resultsAdapter = new SunResultsAdapter();
         resultsRecyclerView.setAdapter(resultsAdapter);
         fetchSunriseSunsetData(websiteURL);
     }
@@ -103,9 +106,12 @@ public class Sunrise_Results extends AppCompatActivity {
     }
 
     private void saveToRoomDatabase(String latitude, String longitude) {
-        Sunrise_Data newDataRoom = new Sunrise_Data();
-        newDataRoom.x_coordinate = latitude;
-        newDataRoom.y_coordinate = longitude;
-        SunriseApplication.getDatabase().sunriseDao().insert(newDataRoom);
+        ExecutorService databaseExecutor = Executors.newSingleThreadExecutor();
+        databaseExecutor.execute(() -> {
+            Sunrise_Data newDataRoom = new Sunrise_Data();
+            newDataRoom.x_coordinate = latitude;
+            newDataRoom.y_coordinate = longitude;
+            SunriseApplication.getDatabase().sunriseDao().insert(newDataRoom);
+        });
     }
 }

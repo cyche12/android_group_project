@@ -11,6 +11,7 @@
     <EditText
         android:id="@+id/etSearchInput"
         android:layout_width="0dp"
+        android:inputType="text"
         android:layout_height="wrap_content"
         android:hint="@string/search_hint"
         app:layout_constraintEnd_toStartOf="@+id/btnSearch"
@@ -44,11 +45,12 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
+        android:contentDescription="@string/songSearch"
         android:id="@+id/imageView"
         android:layout_width="194dp"
         android:layout_height="158dp"
         android:src="@drawable/song"
-        app:layout_constraintTop_toBottomOf="@+id/etSearchInput"
-        tools:layout_editor_absoluteX="211dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSearchInput" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
