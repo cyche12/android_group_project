@@ -5,6 +5,16 @@ import androidx.lifecycle.ViewModelProvider;
 import algonquin.cst2335.android_group_project.DAO.DictionaryDao;
 import algonquin.cst2335.android_group_project.Dictionary.DictionaryViewModel;
 
+/**
+ * Factory class for creating instances of the DictionaryViewModel.
+ * This factory is necessary because the DictionaryViewModel requires a constructor parameter (DictionaryDao),
+ * which is not supported by the default ViewModelProvider.
+ * Purpose of the file: To provide a custom factory for instantiating DictionaryViewModel with the necessary DictionaryDao dependency.
+ * Author: Piyalee Mangaraj
+ * Lab Section: CST2335 012
+ * Creation Date: 1st April 2024
+ */
+
 public class DictionaryViewModelFactory implements ViewModelProvider.Factory {
     private final DictionaryDao dictionaryDao;
 

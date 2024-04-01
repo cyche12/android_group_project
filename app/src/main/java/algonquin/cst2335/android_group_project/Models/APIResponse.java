@@ -1,5 +1,16 @@
 package algonquin.cst2335.android_group_project.Models;
 import java.util.List;
+
+/**
+ * Represents the structure of a response from the dictionary API.
+ * This class includes the word being defined, its phonetic transcription, a list of phonetics,
+ * meanings, licensing information, and source URLs.
+ * Purpose of the file: To provide a model for parsing the JSON response from the dictionary API,
+ * facilitating the extraction and use of various components of the API response within the application.
+ * Author: Piyalee Mangaraj
+ * Lab Section: CST2335 012
+ * Creation Date: 1st April 2024
+ */
 public class APIResponse {
     String word="";
     String phonetic;

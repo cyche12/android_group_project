@@ -10,7 +10,16 @@ import java.util.concurrent.Executors;
 import algonquin.cst2335.android_group_project.DAO.DictionaryDao;
 import algonquin.cst2335.android_group_project.Entity.Definition;
 import algonquin.cst2335.android_group_project.Entity.SearchTerm;
-
+/**
+ * ViewModel for managing UI-related data in the Dictionary application.
+ * This ViewModel handles the retrieval of search terms and their associated definitions
+ * from the database asynchronously and exposes LiveData objects for observation by the UI.
+ * Purpose of the file: To provide a clean API for UI components to interact with the database
+ * for fetching search terms and definitions, and managing definition deletion.
+ * Author: Piyalee Mangaraj
+ * Lab Section: CST2335 012
+ * Creation Date: 1st April 2024
+ */
 public class DictionaryViewModel extends ViewModel {
 
     private final DictionaryDao dictionaryDao;

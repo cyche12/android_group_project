@@ -1,5 +1,18 @@
 package algonquin.cst2335.android_group_project.Models;
 import java.util.List;
+
+/**
+ * Represents a definition of a word, including its synonyms, antonyms, and an example usage.
+ * This model is used to store and manage the data associated with each definition retrieved
+ * from a dictionary API or other data source.
+ *
+ * Purpose of the file: To define the model for storing information about a word's definition,
+ * synonyms, antonyms, and an example usage within the dictionary application.
+ * Author: Piyalee Mangaraj
+ * Lab Section: CST2335 012
+ * Creation Date: 1st April 2024
+ */
+
 public class Definition {
     private String definition;
     private List<String> synonyms;

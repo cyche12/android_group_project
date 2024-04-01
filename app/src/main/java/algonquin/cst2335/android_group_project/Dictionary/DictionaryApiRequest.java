@@ -15,6 +15,16 @@ import java.util.List;
 import algonquin.cst2335.android_group_project.Models.APIResponse;
 import algonquin.cst2335.android_group_project.Models.Definition;
 import algonquin.cst2335.android_group_project.Models.Meaning;
+/**
+ * Class for handling API requests to a dictionary service.
+ * This class encapsulates the functionality to request definitions of words
+ * from a remote API and parse the results.
+ * Purpose of the file: To facilitate communication with a dictionary API and parse
+ * the JSON response into a usable format for the application.
+ * Author: Piyalee Mangaraj
+ * Lab Section: CST2335 012
+ * Creation Date: 1st April 2024
+ */
 
 public class DictionaryApiRequest {
     private final Context context;

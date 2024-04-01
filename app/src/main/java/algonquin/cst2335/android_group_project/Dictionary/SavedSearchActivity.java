@@ -12,7 +12,16 @@ import androidx.room.Room;
 import algonquin.cst2335.android_group_project.DAO.DictionaryDao;
 import algonquin.cst2335.android_group_project.DictionaryDatabase;
 import algonquin.cst2335.android_group_project.R;
-
+/**
+ * Activity for displaying saved search terms.
+ * This activity sets up a RecyclerView to list saved search terms and initiates navigation
+ * to the DefinitionsActivity when a term is selected, passing the selected search term ID
+ * to the DefinitionsActivity for displaying its definitions.
+ * Purpose of the file: To display a list of saved search terms and navigate to definitions upon selection.
+ * Author: Piyalee Mangaraj
+ * Lab Section: CST2335 012
+ * Creation Date: 1st April 2024
+ */
 public class SavedSearchActivity extends AppCompatActivity {
 
     private RecyclerView savedSearchRecyclerView;

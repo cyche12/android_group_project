@@ -9,7 +9,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-
+/**
+ * Adapter class for RecyclerView that displays a list of definitions.
+ * This adapter is responsible for creating ViewHolders that contain TextViews,
+ * and binding those TextViews to the definitions data provided to the adapter.
+ *
+ * Purpose of the file: To provide an adapter for RecyclerView that handles the display
+ * of dictionary definitions in a list format.
+ *  Author: Piyalee Mangaraj
+ *  Lab Section: CST2335 012
+ *  Creation Date: 1st April 2024
+ */
 public class DefinitionsAdapter extends RecyclerView.Adapter<DefinitionsAdapter.ViewHolder> {
 
     private List<String> definitions;

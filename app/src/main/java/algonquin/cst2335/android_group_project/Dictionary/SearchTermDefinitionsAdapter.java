@@ -13,6 +13,17 @@ import java.util.List;
 
 import algonquin.cst2335.android_group_project.Entity.Definition;
 
+/**
+ * An adapter for RecyclerView to display a list of term definitions.
+ * This adapter is designed for use in a context where each definition can be clicked,
+ * typically to trigger a delete action or another form of interaction.
+ * Purpose of the file: To provide an interface between a list of definition data and
+ * a RecyclerView that displays them, handling the layout inflation and binding of data
+ * to individual views within the RecyclerView.
+ * Author: Piyalee Mangaraj
+ * Lab Section: CST2335 012
+ * Creation Date: 1st April 2024
+ */
 
 public class SearchTermDefinitionsAdapter extends RecyclerView.Adapter<SearchTermDefinitionsAdapter.ViewHolder> {
     private List<Definition> definitions;

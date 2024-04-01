@@ -17,7 +17,15 @@ import algonquin.cst2335.android_group_project.DictionaryDatabase;
 import algonquin.cst2335.android_group_project.Entity.Definition;
 import algonquin.cst2335.android_group_project.Entity.SearchTerm;
 import algonquin.cst2335.android_group_project.R;
-
+/**
+ * Activity for displaying definitions of a particular search term.
+ * This activity sets up a RecyclerView to list definitions, allows users to delete definitions,
+ * and displays the search term in the title.
+ *
+ * Author: Piyalee Mangaraj
+ * Lab Section: CST2335 012
+ * Creation Date: 1st April 2024
+ */
 public class DefinitionsActivity extends AppCompatActivity {
     private RecyclerView definitionsRecyclerView;
     private SearchTermDefinitionsAdapter definitionsAdapter;
@@ -27,7 +35,14 @@ public class DefinitionsActivity extends AppCompatActivity {
     DictionaryDatabase db;
     DictionaryDao dao;
 
-
+    /**
+     * Initializes the activity, sets up the RecyclerView, adapter, and ViewModel.
+     * Fetches the definitions for the given search term and updates the UI accordingly.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in onSaveInstanceState(Bundle). Note: Otherwise it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +72,12 @@ public class DefinitionsActivity extends AppCompatActivity {
             });
         }).start();
     }
-
+    /**
+     * Shows a confirmation dialog to the user when they attempt to delete a definition.
+     * If the user confirms, the definition is deleted from the database.
+     *
+     * @param definition The definition that the user has chosen to delete.
+     */
     private void showDeleteConfirmationDialog(Definition definition) {
         new AlertDialog.Builder(this)
                 .setTitle("Delete Definition")

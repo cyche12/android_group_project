@@ -3,15 +3,22 @@ package algonquin.cst2335.android_group_project;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +29,19 @@ import algonquin.cst2335.android_group_project.Dictionary.DictionaryApiRequest;
 import algonquin.cst2335.android_group_project.Dictionary.SavedSearchActivity;
 import algonquin.cst2335.android_group_project.Entity.Definition;
 import algonquin.cst2335.android_group_project.Entity.SearchTerm;
+
+/**
+ * Main activity for the dictionary application.
+ * This activity handles user interactions, such as searching for definitions,
+ * saving search terms, and viewing saved searches. It interacts with the Dictionary API,
+ * local database, and other activities to provide the app's core functionality.
+ *
+ * Purpose of the file: To serve as the primary user interface for the dictionary application,
+ * facilitating search operations, displaying results, and navigating between different features.
+ * Author: Piyalee Mangaraj
+ * Lab Section: CST2335 012
+ * Creation Date: 1st April 2024
+ */
 
 public class DictionaryMainActivity extends AppCompatActivity {
 
@@ -44,6 +64,8 @@ public class DictionaryMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dictionary_activity_main);
+        Toolbar toolbar = findViewById(R.id.dict_toolbar);
+        setSupportActionBar(toolbar);
 
         searchEditText = findViewById(R.id.searchEditText);
         searchButton = findViewById(R.id.searchButton);
@@ -70,7 +92,6 @@ public class DictionaryMainActivity extends AppCompatActivity {
                                                 String word = searchEditText.getText().toString();
                                                 if (!word.isEmpty()) {
                                                     currentSearchTerm = word;
-                                                    saveSearchTerm(currentSearchTerm);
                                                 }
                                                 dictionaryApiRequest.getDefinitions(word, new DictionaryApiRequest.ResponseListener() {
                                                     @Override
@@ -108,6 +129,31 @@ public class DictionaryMainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.dicthelp) {
+            showHelpDialog();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showHelpDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("How to Use")
+                .setMessage("Here are the instructions on how to use the app:\n\n- Use the search bar to find definitions.\n- Save your searches with the Save button.\n- View saved searches with the View button.\n- Click saved searches to view definitions\n- Click definition to delete.")
+                .setPositiveButton("OK", null)
+                .show();
+    }
+
+
+
     private void saveSearchTerm(String searchText) {
         SharedPreferences sharedPreferences = getSharedPreferences("DictionaryPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -141,7 +187,9 @@ public class DictionaryMainActivity extends AppCompatActivity {
                 currentDefinitions.clear();
                 definitionsAdapter.setDefinitions(currentDefinitions); // Make sure your adapter has a method to set definitions
                 definitionsAdapter.notifyDataSetChanged();
-                Toast.makeText(DictionaryMainActivity.this, "Definitions saved successfully", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(DictionaryMainActivity.this, "Definitions saved successfully", Toast.LENGTH_SHORT).show();
+                View rootView = findViewById(android.R.id.content); // Get the root view of the layout
+                Snackbar.make(rootView, "Definitions saved successfully", Snackbar.LENGTH_SHORT).show();
             });
         }).start();
     }

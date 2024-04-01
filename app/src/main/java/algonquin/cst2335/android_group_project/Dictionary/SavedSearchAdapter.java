@@ -11,6 +11,18 @@ import java.util.function.Consumer;
 
 import algonquin.cst2335.android_group_project.Entity.SearchTerm;
 
+/**
+ * RecyclerView adapter for displaying a list of saved search terms.
+ * Each item in the list provides an interactive UI element that, when clicked,
+ * will trigger a specified action defined by the onTermClicked Consumer,
+ * typically navigating to a detailed view of the term's definitions.
+ * Purpose of the file: To adapt a list of SearchTerm objects for display in a RecyclerView,
+ * providing a clickable UI for each term.
+ * Author: Piyalee Mangaraj
+ * Lab Section: CST2335 012
+ * Creation Date: 1st April 2024
+ */
+
 public class SavedSearchAdapter extends RecyclerView.Adapter<SavedSearchAdapter.ViewHolder> {
 
     private final List<SearchTerm> searchTerms;
