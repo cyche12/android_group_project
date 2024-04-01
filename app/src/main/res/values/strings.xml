@@ -7,8 +7,8 @@
     <string name="back_button">New Search</string>
     <string name="Piyalee_Link">Piyalee\'s App</string>
     <string name="Gabriel_Link">Gabriel\'s_App</string>
-    <string name="Shilpi_Link">Shilpi\'s_App</string>
-    <string name="Jake_Link">Jake\'s_App</string>
+    <string name="Shilpi_Link">Shilpi\'s App</string>
+    <string name="Jake_Link">Jake\'s App</string>
     <string name="search_hint">Please enter word for the definition</string>
     <string name="search_button_text">Submit</string>
     <string name="dictionary">Dictionary</string>
