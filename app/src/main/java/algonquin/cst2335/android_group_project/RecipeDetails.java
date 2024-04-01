@@ -19,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -123,7 +124,12 @@ public class RecipeDetails extends AppCompatActivity {
                 savedRecipeDao.insert(savedRecipeReturn);
             });
 
-            Toast.makeText(RecipeDetails.this, "Recipe saved", Toast.LENGTH_SHORT).show();
+            Snackbar recipeSnack = Snackbar.make(binding.getRoot(), "Recipe Saved", Snackbar.LENGTH_LONG)
+                    .setAction("View Saved Recipes", v ->{
+                        Intent intent = new Intent(RecipeDetails.this, SavedRecipes.class);
+                        startActivity(intent);
+                    });
+            recipeSnack.show();
         });
 
     }
