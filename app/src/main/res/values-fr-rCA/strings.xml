@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">android_group_project</string>
+    <string name="dict_search_hint">Veuillez saisir un mot pour la signification</string>
+    <string name="dict_search_button_text">Soumettre</string>
+    <string name="dict_save_button_text">Enregistrer les définitions</string>
+    <string name="dict_view_button_text">Afficher le terme de recherche</string>
+    <string name="dict_dictionary">DICTIONNAIRE</string>
+    <string name="dhelp">Aide</string>
+    <string name="Jake_Link">Jake/s_App</string>
+    <string name="Shilpi_Link">Shilpi/s_App</string>
+    <string name="Piyalee_Link">Piyalee/s_App</string>
+    <string name="Gabriel_Link">Gabriel/s_App</string>
+</resources>
