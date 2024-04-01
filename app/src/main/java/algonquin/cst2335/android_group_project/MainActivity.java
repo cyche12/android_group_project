@@ -38,7 +38,7 @@
     Button btn4 = findViewById(R.id.button4);   // button4 connects to Song API
         Intent SunIntent = new Intent(MainActivity.this, Sunrise_Search.class);
         Intent RecipeIntent = new Intent(MainActivity.this, RecipeSearch.class);
-        Intent Dictionaryintent = new Intent(MainActivity.this, DictionaryAPI.class);
+        Intent Dictionaryintent = new Intent(MainActivity.this, DictionaryMainActivity.class);
         Intent Songintent = new Intent(MainActivity.this, SongAPI.class);
 
 
@@ -73,7 +73,7 @@
             startActivity(new Intent(MainActivity.this, RecipeSearch.class)); //Recipe Search API class with item2
             return true;
         } else if (id == R.id.item3) {
-            startActivity(new Intent(MainActivity.this, Dictionary.class)); // Dictionary API class with item3
+            startActivity(new Intent(MainActivity.this, DictionaryMainActivity.class)); // Dictionary API class with item3
             return true;
         } else if (id == R.id.item4) {
             startActivity(new Intent(MainActivity.this, SongAPI.class)); //Song API class with item4

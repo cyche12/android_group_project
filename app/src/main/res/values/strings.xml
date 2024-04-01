@@ -15,9 +15,9 @@
     <string name="view_saved_searches_button_text">Past Search Results</string>
     <string name="artist_image">Artist Image</string>
     <string name="artist_name">Artist Name</string>
-    <string name="album_cover" />
-    <string name="album_name" />
-    <string name="duration" />
+    <string name="album_cover" translatable="false" />
+    <string name="album_name" translatable="false" />
+    <string name="duration" translatable="false" />
     <string name="app_name1">DeezerSongSearch</string>
     <string name="arist_search_hint">Enter artist name</string>
     <string name="search">Search</string>
@@ -29,5 +29,11 @@
     <string name="recipe_id">Recipe ID</string>
     <string name="summary">Summary</string>
     <string name="recipe_URL">Spoonacular Source Url</string>
+    <string name="dict_search_hint">Please enter word for Meaning</string>
+    <string name="dict_search_button_text">Submit</string>
+    <string name="dict_save_button_text">Save Definitions</string>
+    <string name="dict_view_button_text">View Search Term</string>
+    <string name="dict_dictionary">DICTIONARY</string>
+    <string name="dhelp">Help</string>
 
 </resources>
