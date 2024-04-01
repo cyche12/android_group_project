@@ -10,25 +10,47 @@ public class Sunrise_Data {
     @ColumnInfo(name = "id")
     public int id;
 
-    @ColumnInfo(name = "x_coordinate")
-    protected String x_coordinate;
+    @ColumnInfo(name = "latitude")
+    protected String latitude;
 
-    @ColumnInfo(name = "y_coordinate")
-    protected String y_coordinate;
+    @ColumnInfo(name = "longitude")
+    protected String longitude;
 
-    public String getX_coordinate() {
-        return x_coordinate;
+    @ColumnInfo(name = "sunrise_time")
+    protected String sunriseTime;
+
+    @ColumnInfo(name = "sunset_time")
+    protected String sunsetTime;
+
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setX_coordinate(String x_coordinate) {
-        this.x_coordinate = x_coordinate;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
-    public String getY_coordinate() {
-        return y_coordinate;
+    public String getLongitude() {
+        return longitude;
     }
 
-    public void setY_coordinate(String y_coordinate) {
-        this.y_coordinate = y_coordinate;
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getSunriseTime() {
+        return sunriseTime;
+    }
+
+    public void setSunriseTime(String sunriseTime) {
+        this.sunriseTime = sunriseTime;
+    }
+
+    public String getSunsetTime() {
+        return sunsetTime;
+    }
+
+    public void setSunsetTime(String sunsetTime) {
+        this.sunsetTime = sunsetTime;
     }
 }

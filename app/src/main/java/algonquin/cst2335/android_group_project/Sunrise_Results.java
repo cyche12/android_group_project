@@ -1,28 +1,20 @@
 package algonquin.cst2335.android_group_project;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 import algonquin.cst2335.android_group_project.databinding.SunriseResultBinding;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class Sunrise_Results extends AppCompatActivity {
 
@@ -38,7 +30,6 @@ public class Sunrise_Results extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        String websiteURL = intent.getStringExtra("websiteURL");
         latitude = intent.getStringExtra("latitude");
         longitude = intent.getStringExtra("longitude");
 
@@ -54,97 +45,70 @@ public class Sunrise_Results extends AppCompatActivity {
 
         Button saveButton = binding.saveButton;
         saveButton.setOnClickListener(view -> saveSearchResult());
-        fetchSunriseSunsetData(websiteURL);
+        fetchSunriseSunsetData(latitude, longitude);
         loadAndDisplayPastSearchResults();
     }
 
-    private void fetchSunriseSunsetData(String websiteURL) {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url(websiteURL)
-                .build();
+    private void fetchSunriseSunsetData(String latitude, String longitude) {
+        // Simulate fetching sunrise and sunset data from API
+        String sunriseTime = "6:30 AM";
+        String sunsetTime = "6:30 PM";
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-                runOnUiThread(() -> Toast.makeText(Sunrise_Results.this, "Failed to fetch data", Toast.LENGTH_SHORT).show());
-            }
+        // Update UI with sunrise and sunset data
+        List<String> newData = new ArrayList<>();
+        newData.add("Latitude: " + latitude + ", Longitude: " + longitude);
+        newData.add("Sunrise: " + sunriseTime);
+        newData.add("Sunset: " + sunsetTime);
 
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful() && response.body() != null) {
-                    String jsonResponse = response.body().string();
-                    try {
-                        JSONObject jsonObject = new JSONObject(jsonResponse);
-                        JSONObject resultsObject = jsonObject.getJSONObject("results");
-                        String sunrise = resultsObject.getString("sunrise");
-                        String sunset = resultsObject.getString("sunset");
+        resultsAdapter.addNewResults(newData);
 
-                        List<String> newData = new ArrayList<>();
-                        newData.add("Sunrise: " + sunrise);
-                        newData.add("Sunset: " + sunset);
-
-                        runOnUiThread(() -> {
-                            // Add new search results to the adapter
-                            resultsAdapter.addNewResults(newData);
-                            // Save new search results to SharedPreferences and Room Database
-                            saveToSharedPreferences(latitude, longitude, sunrise, sunset);
-                            saveToRoomDatabase(latitude, longitude);
-                        });
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        runOnUiThread(() -> Toast.makeText(Sunrise_Results.this, "Failed to parse JSON", Toast.LENGTH_SHORT).show());
-                    }
-                } else {
-                    runOnUiThread(() -> Toast.makeText(Sunrise_Results.this, "Response not successful", Toast.LENGTH_SHORT).show());
-                }
-            }
-        });
+        // Save new search results to Room database
+        saveToRoomDatabase(latitude, longitude, sunriseTime, sunsetTime);
     }
 
     private void loadAndDisplayPastSearchResults() {
         // Load past search results from Room Database
         ExecutorService databaseExecutor = Executors.newSingleThreadExecutor();
         databaseExecutor.execute(() -> {
-            List<Sunrise_Data> pastSearchResults = SunriseApplication.getDatabase().sunriseDao().getSunriseData();
+            try {
+                List<Sunrise_Data> pastSearchResults = SunriseApplication.getDatabase().sunDao().getSunriseData();
 
-            // Convert past search results to a format suitable for display
-            List<String> pastSearchResultStrings = new ArrayList<>();
-            for (Sunrise_Data data : pastSearchResults) {
-                pastSearchResultStrings.add("Latitude: " + data.x_coordinate + ", Longitude: " + data.y_coordinate);
-            }
+                // Convert past search results to a format suitable for display
+                List<String> pastSearchResultStrings = new ArrayList<>();
+                for (Sunrise_Data data : pastSearchResults) {
+                    pastSearchResultStrings.add("Latitude: " + data.getLatitude() + ", Longitude: " + data.getLongitude());
+                }
 
-            runOnUiThread(() -> {
                 // Add past search results to the adapter
-                resultsAdapter.addPastResults(pastSearchResultStrings);
-            });
+                runOnUiThread(() -> resultsAdapter.addPastResults(pastSearchResultStrings));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
 
     private void saveSearchResult() {
         // Save the current latitude and longitude to the TextView below the RecyclerView
         String currentSearchResult = "Latitude: " + latitude + ", Longitude: " + longitude;
-        searchResultTextView.setText(currentSearchResult);
+        String existingText = searchResultTextView.getText().toString();
+        String newText = existingText.isEmpty() ? currentSearchResult : existingText + "\n" + currentSearchResult;
+        searchResultTextView.setText(newText);
     }
 
-    private void saveToSharedPreferences(String latitude, String longitude, String sunrise, String sunset) {
-        SharedPreferences dataStorage = getSharedPreferences("dataEntered", MODE_PRIVATE);
-        SharedPreferences.Editor editor = dataStorage.edit();
-        editor.putString("latitude", latitude);
-        editor.putString("longitude", longitude);
-        editor.putString("sunrise", sunrise);
-        editor.putString("sunset", sunset);
-        editor.apply();
-    }
 
-    private void saveToRoomDatabase(String latitude, String longitude) {
+    private void saveToRoomDatabase(String latitude, String longitude, String sunriseTime, String sunsetTime) {
         ExecutorService databaseExecutor = Executors.newSingleThreadExecutor();
         databaseExecutor.execute(() -> {
-            Sunrise_Data newDataRoom = new Sunrise_Data();
-            newDataRoom.x_coordinate = latitude;
-            newDataRoom.y_coordinate = longitude;
-            SunriseApplication.getDatabase().sunriseDao().insert(newDataRoom);
+            try {
+                Sunrise_Data newDataRoom = new Sunrise_Data();
+                newDataRoom.setLatitude(latitude);
+                newDataRoom.setLongitude(longitude);
+                newDataRoom.setSunriseTime(sunriseTime);
+                newDataRoom.setSunsetTime(sunsetTime);
+                SunriseApplication.getDatabase().sunDao().insert(newDataRoom);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
 }
