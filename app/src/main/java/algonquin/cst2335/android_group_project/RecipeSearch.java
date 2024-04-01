@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -66,11 +68,20 @@ public class RecipeSearch extends AppCompatActivity {
         binding = ActivityRecipeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        SharedPreferences prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        String sharedPref = prefs.getString("Search", "");
+        EditText searchBar = findViewById(R.id.searchBar);
+        searchBar.setText(sharedPref);
+
+
         binding.searchButton.setOnClickListener(click ->{
             clearRecyclerView();
             String searchText = binding.searchBar.getText().toString().trim();
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("Search",  searchBar.getText().toString());
+            editor.apply();
             if (!searchText.isEmpty()) {
-                String url = "https://api.spoonacular.com/recipes/complexSearch?query=" + searchText + "&apiKey=3eede3908bc14abfa1619421c6fcefea";
+                String url = "https://api.spoonacular.com/recipes/complexSearch?query=" + searchText + "&apiKey=a91cbc1da183408a8b42d047304e7bf4";
 
 
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -106,6 +117,10 @@ public class RecipeSearch extends AppCompatActivity {
             }
         });
 
+        binding.test.setOnClickListener(clk->{
+            Intent intent = new Intent(RecipeSearch.this, SavedRecipes.class);
+            startActivity(intent);
+        });
         binding.recipeRecycleView.setAdapter(myAdapter = new RecyclerView.Adapter<MyRowHolder>() {
             @NonNull
             @Override
