@@ -36,5 +36,6 @@
     <string name="dict_dictionary">DICTIONARY</string>
     <string name="dhelp">Help</string>
     <string name="save_search_result">Save Search Result</string>
+    <string name="past_searches">Past Searches</string>
 
 </resources>

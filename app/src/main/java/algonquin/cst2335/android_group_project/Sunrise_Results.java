@@ -45,8 +45,11 @@ public class Sunrise_Results extends AppCompatActivity {
 
         Button saveButton = binding.saveButton;
         saveButton.setOnClickListener(view -> saveSearchResult());
+
+        Button historyButton = binding.historyButton;
+        historyButton.setOnClickListener(view -> loadAndDisplayPastSearchResults());
+
         fetchSunriseSunsetData(latitude, longitude);
-        loadAndDisplayPastSearchResults();
     }
 
     private void fetchSunriseSunsetData(String latitude, String longitude) {
@@ -73,14 +76,14 @@ public class Sunrise_Results extends AppCompatActivity {
             try {
                 List<Sunrise_Data> pastSearchResults = SunriseApplication.getDatabase().sunDao().getSunriseData();
 
-                // Convert past search results to a format suitable for display
-                List<String> pastSearchResultStrings = new ArrayList<>();
+                // Create a StringBuilder to concatenate all past search results
+                StringBuilder pastSearchResultText = new StringBuilder();
                 for (Sunrise_Data data : pastSearchResults) {
-                    pastSearchResultStrings.add("Latitude: " + data.getLatitude() + ", Longitude: " + data.getLongitude());
+                    pastSearchResultText.append("Latitude: ").append(data.getLatitude()).append(", Longitude: ").append(data.getLongitude()).append("\n");
                 }
 
-                // Add past search results to the adapter
-                runOnUiThread(() -> resultsAdapter.addPastResults(pastSearchResultStrings));
+                // Update the TextView with the concatenated search results
+                runOnUiThread(() -> searchResultTextView.setText(pastSearchResultText.toString()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -88,13 +91,9 @@ public class Sunrise_Results extends AppCompatActivity {
     }
 
     private void saveSearchResult() {
-        // Save the current latitude and longitude to the TextView below the RecyclerView
         String currentSearchResult = "Latitude: " + latitude + ", Longitude: " + longitude;
-        String existingText = searchResultTextView.getText().toString();
-        String newText = existingText.isEmpty() ? currentSearchResult : existingText + "\n" + currentSearchResult;
-        searchResultTextView.setText(newText);
+        searchResultTextView.setText(currentSearchResult);
     }
-
 
     private void saveToRoomDatabase(String latitude, String longitude, String sunriseTime, String sunsetTime) {
         ExecutorService databaseExecutor = Executors.newSingleThreadExecutor();
