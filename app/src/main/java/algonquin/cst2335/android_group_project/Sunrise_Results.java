@@ -108,8 +108,8 @@ public class Sunrise_Results extends AppCompatActivity {
         ExecutorService databaseExecutor = Executors.newSingleThreadExecutor();
         databaseExecutor.execute(() -> {
             Sunrise_Data newDataRoom = new Sunrise_Data();
-            newDataRoom.x_coordinate = latitude;
-            newDataRoom.y_coordinate = longitude;
+            newDataRoom.latitude = latitude;
+            newDataRoom.longitude = longitude;
             SunriseApplication.getDatabase().sunriseDao().insert(newDataRoom);
         });
     }
