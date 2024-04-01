@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,6 +24,8 @@ import okhttp3.Response;
 public class Sunrise_Results extends AppCompatActivity {
 
     private ResultsAdapter resultsAdapter;
+    private String latitude;
+    private String longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +35,14 @@ public class Sunrise_Results extends AppCompatActivity {
 
         Intent intent = getIntent();
         String websiteURL = intent.getStringExtra("websiteURL");
-        String latitude = intent.getStringExtra("latitude");
-        String longitude = intent.getStringExtra("longitude");
-        Button backButton = findViewById(R.id.back_button);
+        latitude = intent.getStringExtra("latitude");
+        longitude = intent.getStringExtra("longitude");
+
+        Button backButton = binding.backButton;
         Intent backIntent = new Intent(Sunrise_Results.this, Sunrise_Search.class);
         backButton.setOnClickListener(click -> startActivity(backIntent));
 
-        RecyclerView resultsRecyclerView = findViewById(R.id.results_recycler_view);
+        RecyclerView resultsRecyclerView = binding.resultsRecyclerView;
         resultsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         resultsAdapter = new ResultsAdapter();
         resultsRecyclerView.setAdapter(resultsAdapter);
@@ -70,21 +72,14 @@ public class Sunrise_Results extends AppCompatActivity {
                         String sunrise = resultsObject.getString("sunrise");
                         String sunset = resultsObject.getString("sunset");
 
-                        // Construct list with sunrise and sunset data
                         List<String> newData = new ArrayList<>();
                         newData.add("Sunrise: " + sunrise);
                         newData.add("Sunset: " + sunset);
-                        SharedPreferences dataStorage = getSharedPreferences("dataEntered", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = dataStorage.edit();
-                        String latitude = dataStorage.getString("latitude", "");
-                        String longitude = dataStorage.getString("longitude", "");
 
-                        editor.putString("latitude", latitude);
-                        editor.putString("longitude", longitude);
-                        editor.apply();
-
-                        // Update ResultsAdapter on the UI thread
+                        saveToSharedPreferences(latitude, longitude, sunrise, sunset);
                         runOnUiThread(() -> resultsAdapter.updateResults(newData));
+
+                        saveToRoomDatabase(latitude, longitude);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -95,5 +90,22 @@ public class Sunrise_Results extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void saveToSharedPreferences(String latitude, String longitude, String sunrise, String sunset) {
+        SharedPreferences dataStorage = getSharedPreferences("dataEntered", MODE_PRIVATE);
+        SharedPreferences.Editor editor = dataStorage.edit();
+        editor.putString("latitude", latitude);
+        editor.putString("longitude", longitude);
+        editor.putString("sunrise", sunrise);
+        editor.putString("sunset", sunset);
+        editor.apply();
+    }
+
+    private void saveToRoomDatabase(String latitude, String longitude) {
+        Sunrise_Data newDataRoom = new Sunrise_Data();
+        newDataRoom.x_coordinate = latitude;
+        newDataRoom.y_coordinate = longitude;
+        SunriseApplication.getDatabase().sunriseDao().insert(newDataRoom);
     }
 }

@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity (tableName = "sunrise_data")
 public class Sunrise_Data {
     @PrimaryKey (autoGenerate = true)
     @ColumnInfo(name = "id")
