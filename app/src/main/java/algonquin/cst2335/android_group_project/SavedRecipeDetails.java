@@ -1,5 +1,6 @@
 package algonquin.cst2335.android_group_project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
@@ -8,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +39,39 @@ public class SavedRecipeDetails extends AppCompatActivity {
     String title;
     String recipeID;
     ActivitySavedRecipeDetailsBinding binding;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.recipe_toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem menuItem = menu.findItem(R.id.savedRecipeList);
+        menuItem.setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.savedRecipeList) {
+            Intent intent = new Intent(SavedRecipeDetails.this, SavedRecipes.class);
+            startActivity(intent);
+            return true;
+        }
+        if (item.getItemId() == R.id.recipeHelp) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(SavedRecipeDetails.this);
+            builder.setMessage("Enter a recipe in the search bar and press the search button to " +
+                    "search for recipes.\n" +
+                    "To view recipe details, click on the recipe you wish to view.\n" +
+                    "To save a recipe, click on the Save button in the recipe details.\n" +
+                    "To view saved recipes, click on the star on the toolbar.\n" +
+                    "To delete a recipe from your saved recipe, click on the recipe you wish to " +
+                    "delete and press on the delete button.").setTitle("Help").show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +81,8 @@ public class SavedRecipeDetails extends AppCompatActivity {
 
         binding = ActivitySavedRecipeDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setSupportActionBar(binding.recipeToolbar);
+        getSupportActionBar().setTitle("Gabriel's Fantastic Recipes");
 
         String recipeId = getIntent().getStringExtra("recipeId");
         int position = getIntent().getIntExtra("position", -1);

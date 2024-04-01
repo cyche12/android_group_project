@@ -20,19 +20,16 @@
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="delete"
+        android:text="@string/delete_recipe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/recipeToolbar" />
 
     <ImageView
         android:id="@+id/savedImageDetails"
-        android:layout_width="356dp"
-        android:layout_height="296dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        android:layout_width="287dp"
+        android:layout_height="242dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeToolbar"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -43,4 +40,11 @@
         android:text="@string/summary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/savedImageDetails" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/recipeToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

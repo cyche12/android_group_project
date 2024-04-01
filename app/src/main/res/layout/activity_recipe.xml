@@ -14,7 +14,7 @@
         android:hint="@string/search_bar"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/recipeToolbar" />
 
     <Button
         android:id="@+id/searchButton"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="@string/search_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/recipeToolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipeRecycleView"
@@ -33,15 +33,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/test"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
         app:layout_constraintVertical_bias="1.0" />
 
-    <Button
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="saved"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/recipeToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

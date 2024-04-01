@@ -6,4 +6,8 @@
     <string name="recipe_id">Recipe ID</string>
     <string name="summary">Summary</string>
     <string name="recipe_URL">Spoonacular Source Url</string>
+    <string name="savedRecipe">Saved Recipes</string>
+    <string name="delete_recipe">Delete</string>
+    <string name="save_recipe">Save</string>
+    <string name="recipe_help">Help</string>
 </resources>
