@@ -33,4 +33,5 @@
     <string name="back_button">New Search</string>
     <string name="Piyalee_Link">Piyalee/s_App</string>
     <string name="Gabriel_Link">Gabriel/s_App</string>
+    <string name="save_search_result">Save Search Result</string>
 </resources>

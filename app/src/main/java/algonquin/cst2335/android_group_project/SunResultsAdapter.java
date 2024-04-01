@@ -1,10 +1,3 @@
-//Student: Jake Elliott//
-//Student #040732505//
-//Class: CST2335//
-//Group Members: Jake Elliott, Gabriel Hubert, Shilpi Sarkar, Piyalee Mangaraj//
-//Project: Final Group Project//
-//App: Sunrise/Sunset App//
-
 package algonquin.cst2335.android_group_project;
 
 import android.view.LayoutInflater;
@@ -18,10 +11,16 @@ import java.util.List;
 
 public class SunResultsAdapter extends RecyclerView.Adapter<SunResultsAdapter.ResultViewHolder> {
 
-    private final List<String> data = new ArrayList<>();
+    private final List<String> newData = new ArrayList<>();
+    private final List<String> pastData = new ArrayList<>();
 
-    public void updateResults(List<String> newData) {
-        data.addAll(newData);
+    public void addNewResults(List<String> newData) {
+        this.newData.addAll(newData);
+        notifyDataSetChanged();
+    }
+
+    public void addPastResults(List<String> pastData) {
+        this.pastData.addAll(pastData);
         notifyDataSetChanged();
     }
 
@@ -34,12 +33,17 @@ public class SunResultsAdapter extends RecyclerView.Adapter<SunResultsAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull ResultViewHolder holder, int position) {
-        holder.textView.setText(data.get(position));
+        if (position < newData.size()) {
+            holder.textView.setText(newData.get(position));
+        } else {
+            int pastPosition = position - newData.size();
+            holder.textView.setText(pastData.get(pastPosition));
+        }
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return newData.size() + pastData.size();
     }
 
     static class ResultViewHolder extends RecyclerView.ViewHolder {
@@ -48,9 +52,6 @@ public class SunResultsAdapter extends RecyclerView.Adapter<SunResultsAdapter.Re
         public ResultViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(android.R.id.text1);
-
         }
     }
 }
-
-

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import algonquin.cst2335.android_group_project.databinding.SunriseSearchBinding;
@@ -21,8 +22,8 @@ public class Sunrise_Search extends AppCompatActivity {
         Button searchButton = binding.searchButton;
 
         searchButton.setOnClickListener(view -> {
-            String latitude = latitudeEditText.getText().toString();
-            String longitude = longitudeEditText.getText().toString();
+            String latitude = latitudeEditText.getText().toString().trim();
+            String longitude = longitudeEditText.getText().toString().trim();
 
             if (!latitude.isEmpty() && !longitude.isEmpty()) {
                 Intent intent = new Intent(Sunrise_Search.this, Sunrise_Results.class);
