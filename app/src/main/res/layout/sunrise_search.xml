@@ -38,6 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/y_coordinate" />
 
     <EditText
+        android:autofillHints="Latitude"
         android:id="@+id/x_coordinate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,6 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Sunset_title_string" />
 
     <EditText
+        android:autofillHints="Longitude"
         android:id="@+id/y_coordinate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

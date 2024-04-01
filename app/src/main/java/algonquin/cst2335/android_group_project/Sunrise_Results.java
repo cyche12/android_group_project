@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 import algonquin.cst2335.android_group_project.databinding.SunriseResultBinding;
 import okhttp3.Call;
 import okhttp3.Callback;
