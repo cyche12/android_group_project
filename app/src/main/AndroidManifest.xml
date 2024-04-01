@@ -23,14 +23,17 @@
             android:exported="true" />
         <activity android:name=".SongAPI"
             android:exported="true" />
-        <activity android:name=".DictionaryAPI"
+        <activity android:name=".DictionaryMainActivity"
             android:exported="true"/>
         <activity android:name=".RecipeSearch"
             android:exported="true"/>
         <activity
             android:name=".RecipeDetails"
             android:exported="false" />
-
+        <activity android:name=".Dictionary.DefinitionsActivity"
+            android:exported="true"/>
+        <activity android:name=".Dictionary.SavedSearchActivity"
+            android:exported="true"/>
 
         <activity
             android:name=".MainActivity"
