@@ -7,23 +7,20 @@
     tools:context=".Sunrise_Search">
 
     <TextView
-        android:id="@+id/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Jake_Link"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <TextView
         android:id="@+id/Sunset_title_string"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="15dp"
         android:text="@string/title_name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sun_toolbar" />
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="103dp"
+        android:layout_height="28dp"
+        android:text="@string/Jake_Link"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_name" />
+        app:layout_constraintTop_toBottomOf="@+id/sun_toolbar" />
 
     <Button
         android:id="@+id/search_button"
@@ -37,24 +34,23 @@
         app:layout_constraintTop_toBottomOf="@+id/y_coordinate" />
 
     <EditText
-        android:autofillHints="Latitude"
         android:id="@+id/x_coordinate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:autofillHints="Latitude"
         android:hint="@string/Latitude_string"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Sunset_title_string" />
+        app:layout_constraintTop_toBottomOf="@+id/app_name" />
 
     <EditText
-        android:autofillHints="Longitude"
         android:id="@+id/y_coordinate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:autofillHints="Longitude"
         android:hint="@string/Longitude_string"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"

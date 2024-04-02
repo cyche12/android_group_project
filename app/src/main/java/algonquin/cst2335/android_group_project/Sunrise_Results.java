@@ -162,7 +162,6 @@ public class Sunrise_Results extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.sun_help) {
-            // Handle the action for the help item
             return true;
         } else {
             return super.onOptionsItemSelected(item);
