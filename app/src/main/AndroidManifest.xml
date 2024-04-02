@@ -34,7 +34,12 @@
             android:exported="true"/>
         <activity android:name=".Dictionary.SavedSearchActivity"
             android:exported="true"/>
-
+        <activity android:name=".SavedRecipeDetails"
+            android:exported="true"/>
+        <activity android:name=".SavedRecipes"
+            android:exported="true"/>
+        <activity android:name=".SongDetails"
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
