@@ -1,3 +1,4 @@
+// Sunrise_Search.java
 package algonquin.cst2335.android_group_project;
 
 import android.content.Intent;
@@ -26,10 +27,10 @@ public class Sunrise_Search extends AppCompatActivity {
             String longitude = longitudeEditText.getText().toString().trim();
 
             if (!latitude.isEmpty() && !longitude.isEmpty()) {
-                Intent intent = new Intent(Sunrise_Search.this, Sunrise_Results.class);
-                intent.putExtra("latitude", latitude);
-                intent.putExtra("longitude", longitude);
-                startActivity(intent);
+                Intent nextIntent = new Intent(Sunrise_Search.this, Sunrise_Results.class);
+                nextIntent.putExtra("latitude", latitude);
+                nextIntent.putExtra("longitude", longitude);
+                startActivity(nextIntent);
             } else {
                 Snackbar.make(view, "Please enter latitude and longitude", Snackbar.LENGTH_SHORT).show();
             }

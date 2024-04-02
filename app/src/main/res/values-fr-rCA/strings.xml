@@ -34,4 +34,5 @@
     <string name="Piyalee_Link">Piyalee/s_App</string>
     <string name="Gabriel_Link">Gabriel/s_App</string>
     <string name="save_search_result">Save Search Result</string>
+    <string name="history_recycler_view_description">Past Search Results:</string>
 </resources>

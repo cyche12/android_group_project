@@ -37,5 +37,6 @@
     <string name="dhelp">Help</string>
     <string name="save_search_result">Save Search Result</string>
     <string name="past_searches">Past Searches</string>
+    <string name="history_recycler_view_description">Past Search Results:</string>
 
 </resources>

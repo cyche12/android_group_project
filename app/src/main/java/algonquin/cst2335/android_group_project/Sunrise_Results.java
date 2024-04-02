@@ -3,8 +3,8 @@ package algonquin.cst2335.android_group_project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -28,9 +29,9 @@ import okhttp3.Response;
 public class Sunrise_Results extends AppCompatActivity {
 
     private SunResultsAdapter resultsAdapter;
+    private SunHistoryAdapter historyAdapter;
     private String latitude;
     private String longitude;
-    private TextView searchResultTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,19 +46,23 @@ public class Sunrise_Results extends AppCompatActivity {
         Button backButton = binding.backButton;
         backButton.setOnClickListener(click -> finish());
 
-        RecyclerView resultsRecyclerView = binding.resultsRecyclerView;
+        RecyclerView resultsRecyclerView = binding.sunriseRecyclerView;
         resultsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         resultsAdapter = new SunResultsAdapter();
         resultsRecyclerView.setAdapter(resultsAdapter);
 
-        searchResultTextView = binding.searchResultTextView;
-
         Button saveButton = binding.saveButton;
-        saveButton.setOnClickListener(view -> saveSearchResult());
+        saveButton.setOnClickListener(click -> saveSearchResult());
 
         Button historyButton = binding.historyButton;
-        historyButton.setOnClickListener(view -> loadAndDisplayPastSearchResults());
+        historyButton.setOnClickListener(click -> loadAndDisplayPastSearchResults());
 
+        RecyclerView historyRecyclerView = binding.resultsRecyclerView; // Corrected to use resultsRecyclerView
+        historyRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // Use separate layout manager
+        historyAdapter = new SunHistoryAdapter(new ArrayList<>());
+        historyRecyclerView.setAdapter(historyAdapter);
+
+        // Fetch sunrise and sunset data
         fetchSunriseSunsetData(latitude, longitude);
     }
 
@@ -69,14 +74,15 @@ public class Sunrise_Results extends AppCompatActivity {
 
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (response.isSuccessful()) {
                     try {
+                        assert response.body() != null;
                         JSONObject jsonObject = new JSONObject(response.body().string());
                         JSONObject results = jsonObject.getJSONObject("results");
                         String sunriseTime = results.getString("sunrise");
@@ -88,10 +94,10 @@ public class Sunrise_Results extends AppCompatActivity {
                         newData.add("Sunrise: " + sunriseTime);
                         newData.add("Sunset: " + sunsetTime);
 
-                        runOnUiThread(() -> resultsAdapter.addNewResults(newData));
-
-                        // Save new search results to Room database
-                        saveToRoomDatabase(latitude, longitude, sunriseTime, sunsetTime);
+                        runOnUiThread(() -> {
+                            resultsAdapter.addNewResults(newData);
+                            saveToRoomDatabase(latitude, longitude, sunriseTime, sunsetTime);
+                        });
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -107,14 +113,15 @@ public class Sunrise_Results extends AppCompatActivity {
             try {
                 List<Sunrise_Data> pastSearchResults = SunriseApplication.getDatabase().sunDao().getSunriseData();
 
-                // Create a StringBuilder to concatenate all past search results
-                StringBuilder pastSearchResultText = new StringBuilder();
+                // Create a list of strings for results data
+                List<String> resultsData = new ArrayList<>();
                 for (Sunrise_Data data : pastSearchResults) {
-                    pastSearchResultText.append("Latitude: ").append(data.getLatitude()).append(", Longitude: ").append(data.getLongitude()).append("\n");
+                    resultsData.add("Latitude: " + data.getLatitude() + ", Longitude: " + data.getLongitude() +
+                            "\nSunrise: " + data.getSunriseTime() + "\nSunset: " + data.getSunsetTime());
                 }
 
-                // Update the TextView with the concatenated search results
-                runOnUiThread(() -> searchResultTextView.setText(pastSearchResultText.toString()));
+                // Update the results RecyclerView adapter with the loaded data
+                runOnUiThread(() -> resultsAdapter.addNewResults(resultsData));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -123,7 +130,7 @@ public class Sunrise_Results extends AppCompatActivity {
 
     private void saveSearchResult() {
         String currentSearchResult = "Latitude: " + latitude + ", Longitude: " + longitude;
-        searchResultTextView.setText(currentSearchResult);
+        historyAdapter.addPastResults(Collections.singletonList(currentSearchResult)); // Add the current search result to historyAdapter
     }
 
     private void saveToRoomDatabase(String latitude, String longitude, String sunriseTime, String sunsetTime) {
