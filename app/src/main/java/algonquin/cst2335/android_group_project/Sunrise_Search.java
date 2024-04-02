@@ -42,7 +42,7 @@ public class Sunrise_Search extends AppCompatActivity {
                 nextIntent.putExtra("longitude", longitude);
                 startActivity(nextIntent);
             } else {
-                Snackbar.make(view, "Please enter latitude and longitude", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(binding.getRoot(), "Please enter latitude and longitude", Snackbar.LENGTH_SHORT).show();
             }
         });
     }

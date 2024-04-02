@@ -40,6 +40,10 @@
             android:exported="true"/>
         <activity android:name=".SongDetails"
             android:exported="true"/>
+        <activity android:name=".ViewFavourites"
+            android:exported="true"/>
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
