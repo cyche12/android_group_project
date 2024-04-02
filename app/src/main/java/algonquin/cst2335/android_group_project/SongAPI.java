@@ -1,5 +1,11 @@
 package algonquin.cst2335.android_group_project;
-
+/**
+ * Purpose:SongAPI class is the main class for the application
+ * Author: Shilpi Sarkar
+ * Lab section:012
+ * Date created: March 26, 2024
+ *
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -52,7 +58,11 @@ public class SongAPI extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         TextView messageText;
-
+/**
+ *  @param item  parameter is used to identify the selected menu item by its ID.
+ *  @return boolean Returns  to indicate that the menu item selection event has been
+ *
+ * */
         if (item.getItemId() == R.id.music_item_2) {
             Intent intent = new Intent(SongAPI.this, ViewFavourites.class);
             startActivity(intent);
@@ -64,7 +74,7 @@ public class SongAPI extends AppCompatActivity {
             // Show an AlertDialog with instructions on how to use the app
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("How to Use the App")
-                    .setMessage("Here are instructions on how to use the app:\n1. Type the artist name you wish to search up in the text area \n2. Click on search button to have the list of their songs appear\n3. Click on any song to have more info appear about it\n4. Click the star at the top to view your favourited songs")
+                    .setMessage("There are instructions how to use the app:\n1. Type the artist name you want to search up in the text area \n2. Click on search button to see the list of songs appear\n3. Click on any song for more details about song\n4. Click the star at the top to view your favourite songs")
                     .setPositiveButton("OK", (dialog, which) -> {
                         // Do nothing, just dismiss the dialog
                     })
@@ -77,6 +87,10 @@ public class SongAPI extends AppCompatActivity {
 
     }
 
+/**
+ *@param menu The options menu in which the items are placed.
+ *@return boolean Returns for the menu to be displayed
+ * */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -115,26 +129,26 @@ public class SongAPI extends AppCompatActivity {
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                Log.d("MusicRoom", "Response: " + response.toString()); // Log the response
+                                Log.d("SongAPI", "Response: " + response.toString()); // Log the response
                                 try {
                                     JSONArray data = response.getJSONArray("data");
                                     for (int i = 0; i < data.length(); i++) {
                                         JSONObject artist = data.getJSONObject(i);
                                         tracklist[0] = artist.getString("tracklist");
-                                        Log.e("MusicRoom", "tracklist: " + tracklist[0]); // Log errors
+                                        Log.e("SongAPI", "tracklist: " + tracklist[0]); // Log errors
                                         break;
                                     }
 
-                                    Log.d("MusicRoom", "tracklist[0]: " + tracklist[0]); // Log the tracklist[0]
+                                    Log.d("SongAPI", "tracklist[0]: " + tracklist[0]); // Log the tracklist[0]
                                     // Make the second request only after the first request has completed successfully
                                     if (tracklist[0] != null) {
                                         String url2 = tracklist[0];
-                                        Log.d("MusicRoom", "URL for second request: " + url2); // Log the URL
+                                        Log.d("SongAPI", "URL for second request: " + url2); // Log the URL
                                         JsonObjectRequest jsonObjectRequest2 = new JsonObjectRequest(Request.Method.GET, url2, null,
                                                 new Response.Listener<JSONObject>() {
                                                     @Override
                                                     public void onResponse(JSONObject response) {
-                                                        Log.d("MusicRoom", "Response: " + response.toString()); // Log the response
+                                                        Log.d("SongAPI", "Response: " + response.toString()); // Log the response
                                                         try {
                                                             JSONArray data = response.getJSONArray("data");
                                                             for (int i = 0; i < data.length(); i++) {
@@ -146,10 +160,10 @@ public class SongAPI extends AppCompatActivity {
                                                                 JSONObject album = track.getJSONObject("album");
                                                                 String AlbumName = album.getString("title");
                                                                 String artistImage = album.getString("cover");
-                                                                Log.d("MusicRoom", "SongTitle: " + songTitle); // Log the response
-                                                                Log.d("MusicRoom", "AlbumName: " + AlbumName); // Log the response
-                                                                Log.d("MusicRoom", "Cover: " + artistImage); // Log the response
-                                                                Log.d("MusicRoom", "duration: " + songDuration); // Log the response
+                                                                Log.d("SongAPI", "SongTitle: " + songTitle); // Log the response
+                                                                Log.d("SongAPI", "AlbumName: " + AlbumName); // Log the response
+                                                                Log.d("SongAPI", "Cover: " + artistImage); // Log the response
+                                                                Log.d("SongAPI", "duration: " + songDuration); // Log the response
 
                                                                 SongReturn songs = new SongReturn(songId, artistImage, AlbumName, songTitle, songDuration);
                                                                 music_song_list.add(songs);
@@ -169,7 +183,7 @@ public class SongAPI extends AppCompatActivity {
                                                 });
                                         MySingleton.getInstance(SongAPI.this).addToRequestQueue(jsonObjectRequest2);
                                     } else {
-                                        Log.e("MusicRoom", "No tracklist URL found or it's empty");
+                                        Log.e("SongAPI", "No tracklist URL found or it's empty");
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -188,7 +202,11 @@ public class SongAPI extends AppCompatActivity {
         });
         binding.recyclerView.setAdapter(myAdapter = new RecyclerView.Adapter<MyRowHolder>() {
 
-
+/**
+ * @param parent   The ViewGroup into which the new View will be added
+ * @param viewType The view type of the new View. T
+ * @return MyRowHolder that holds a View of the given view type.
+ * */
             @NonNull
             @Override
             public MyRowHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -197,7 +215,9 @@ public class SongAPI extends AppCompatActivity {
                 return new MyRowHolder(view);
             }
 
-
+/**
+ * @return The total number of music song items in this adapter's data set.
+ * */
             @Override
             public int getItemCount() {
                 return music_song_list.size();
@@ -207,10 +227,10 @@ public class SongAPI extends AppCompatActivity {
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
 
                 SongReturn obj = music_song_list.get(position);
-                Log.d("MusicRoom", "objCover: " + obj.getMusicPicture());
-                Log.d("MusicRoom", "objSongName: " + obj.getMusicSongName());
-                Log.d("MusicRoom", "objAlbumName: " + obj.getMusicAlbumName());
-                Log.d("MusicRoom", "objDuration: " + obj.getMusicDuration());// Log the response
+                Log.d("SongAPI", "objCover: " + obj.getMusicPicture());
+                Log.d("SongAPI", "objSongName: " + obj.getMusicSongName());
+                Log.d("SongAPI", "objAlbumName: " + obj.getMusicAlbumName());
+                Log.d("SongAPI", "objDuration: " + obj.getMusicDuration());// Log the response
                 holder.SongTitles.setText(obj.getMusicSongName());
             }
 
@@ -234,8 +254,8 @@ public class SongAPI extends AppCompatActivity {
             itemView.setOnClickListener(clk -> {
                 int position = getAdapterPosition();
                 SongReturn objDisplay = music_song_list.get(position);
-                Log.d("MusicRoom", "objDisplaySongName: " + objDisplay.getMusicSongName());
-                Log.d("MusicRoom", "objDisplaySongName: " + objDisplay.getMusicAlbumName());
+                Log.d("SongAPI", "objDisplaySongName: " + objDisplay.getMusicSongName());
+                Log.d("SongAPI", "objDisplaySongName: " + objDisplay.getMusicAlbumName());
                 Intent music_details = new Intent(SongAPI.this, SongDetails.class);
                 music_details.putExtra("SongNames", objDisplay.getMusicSongName());
                 music_details.putExtra("AlbumNames", objDisplay.getMusicAlbumName());
@@ -246,9 +266,7 @@ public class SongAPI extends AppCompatActivity {
 
             });
             SongTitles = itemView.findViewById(R.id.song_title_text_view);
-            //  AlbumTitle = itemView.findViewById(R.id.textViewAlbumName);
-            //  duration = itemView.findViewById(R.id.musicTextViewDuration);
-            //  AlbumImage = itemView.findViewById(R.id.musicImageViewAlbumCover);
+
         }
     }
 

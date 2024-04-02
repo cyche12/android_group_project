@@ -1,5 +1,11 @@
 package algonquin.cst2335.android_group_project;
-
+/**
+ * Purpose:SongAPITest2 using for test test the interface on their part of the application
+ * Author: Shilpi Sarkar
+ * Lab section:012
+ * Date created: April 1, 2024
+ *
+ */
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -217,7 +223,8 @@ public class SongAPITest2 {
                         isDisplayed()));
         materialButton.perform(click());
 
-        // No actionOnItemAtPosition here, just clicking on the RecyclerView
+        /* No actionOnItemAtPosition here, just clicking on the RecyclerView */
+
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.recyclerView),
                         childAtPosition(
