@@ -68,6 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/search_button" />
 
     <androidx.appcompat.widget.Toolbar
+        app:menu="@menu/sun_menu"
         android:id="@+id/sun_toolbar"
         android:layout_width="409dp"
         android:layout_height="wrap_content"

@@ -2,12 +2,12 @@ package algonquin.cst2335.android_group_project;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -35,7 +35,6 @@ public class Sunrise_Search extends AppCompatActivity {
             String longitude = longitudeEditText.getText().toString().trim();
 
 
-
             if (!latitude.isEmpty() && !longitude.isEmpty()) {
                 Intent nextIntent = new Intent(Sunrise_Search.this, Sunrise_Results.class);
                 nextIntent.putExtra("latitude", latitude);
@@ -48,15 +47,21 @@ public class Sunrise_Search extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.sun_menu, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        return true;
+        if (id == R.id.sun_help) {
+            showSunriseHelpDialog();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showSunriseHelpDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("How to Use")
+                .setMessage("Here are the instructions on how to use the sunrise feature:\n\n- Enter the latitude and longitude.\n- Click the search button to find sunrise information.")
+                .setPositiveButton("OK", null)
+                .show();
     }
 }
