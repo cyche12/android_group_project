@@ -11,9 +11,14 @@ import java.util.List;
 @Dao
 public interface SavedRecipeDao {
     @Insert
-    void insert(SavedRecipe savedRecipe);
+    void insert(SavedRecipeReturn savedRecipeReturn);
     @Delete
-    void delete(SavedRecipe savedRecipe);
+    void delete(SavedRecipeReturn savedRecipeReturn);
     @Query("SELECT * FROM saved_recipes")
-    LiveData<List<SavedRecipe>> getAllSavedRecipes();
+    LiveData<List<SavedRecipeReturn>> getAllSavedRecipes();
+
+    @Query("SELECT * FROM saved_recipes WHERE Recipe_ID = :recipeId")
+    SavedRecipeReturn getSavedRecipeById(String recipeId);
+    @Query("DELETE FROM saved_recipes WHERE Recipe_ID = :recipeId")
+    void deleteById(String recipeId);
 }

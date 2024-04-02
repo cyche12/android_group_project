@@ -25,18 +25,21 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import algonquin.cst2335.android_group_project.databinding.ActivityRecipeDetailsBinding;
+import algonquin.cst2335.android_group_project.databinding.ActivitySavedRecipeDetailsBinding;
 
-public class RecipeDetails extends AppCompatActivity {
+public class SavedRecipeDetails extends AppCompatActivity {
     String summary;
     String recipeUrl;
     String imageUrl;
     String title;
     String recipeID;
-    ActivityRecipeDetailsBinding binding;
+    ActivitySavedRecipeDetailsBinding binding;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -44,14 +47,20 @@ public class RecipeDetails extends AppCompatActivity {
         return true;
     }
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem menuItem = menu.findItem(R.id.savedRecipeList);
+        menuItem.setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
+    }
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.savedRecipeList) {
-            Intent intent = new Intent(RecipeDetails.this, SavedRecipes.class);
+            Intent intent = new Intent(SavedRecipeDetails.this, SavedRecipes.class);
             startActivity(intent);
             return true;
         }
         if (item.getItemId() == R.id.recipeHelp) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(RecipeDetails.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(SavedRecipeDetails.this);
             builder.setMessage("Enter a recipe in the search bar and press the search button to " +
                     "search for recipes.\n" +
                     "To view recipe details, click on the recipe you wish to view.\n" +
@@ -66,16 +75,17 @@ public class RecipeDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         RecipeDatabase db = Room.databaseBuilder(getApplicationContext(), RecipeDatabase.class, "recipe_database").build();
         SavedRecipeDao savedRecipeDao = db.savedRecipeDao();
 
-
-        binding = ActivityRecipeDetailsBinding.inflate(getLayoutInflater());
+        binding = ActivitySavedRecipeDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.recipeToolbar);
         getSupportActionBar().setTitle("Gabriel's Fantastic Recipes");
 
         String recipeId = getIntent().getStringExtra("recipeId");
+        int position = getIntent().getIntExtra("position", -1);
 
         String url = "https://api.spoonacular.com/recipes/"+ recipeId +"/information?apiKey=3eede3908bc14abfa1619421c6fcefea";
 
@@ -91,9 +101,9 @@ public class RecipeDetails extends AppCompatActivity {
                             title = jsonObject.getString("title");
                             recipeID = String.valueOf(jsonObject.getInt("id"));
 
-                            ImageView recipeImage = findViewById(R.id.imageDetails);
-                            TextView recipeSum = findViewById(R.id.recipeSum);
-                            TextView recipeURL = findViewById(R.id.recipeURL);
+                            ImageView recipeImage = findViewById(R.id.savedImageDetails);
+                            TextView recipeSum = findViewById(R.id.savedRecipeSum);
+                            TextView recipeURL = findViewById(R.id.recipeURLDetails);
 
                             Picasso.get().load(imageUrl).into(recipeImage);
                             recipeSum.setText(Html.fromHtml(summary));
@@ -110,27 +120,17 @@ public class RecipeDetails extends AppCompatActivity {
                 });
         MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
 
-        binding.saveButton.setOnClickListener(click->{
-            SavedRecipeReturn savedRecipeReturn = new SavedRecipeReturn();
-            savedRecipeReturn.setTitle(title);
-            savedRecipeReturn.setImageUrl(imageUrl);
-            savedRecipeReturn.setRecipeId(recipeID);
-            Log.i("recipeID",recipeID);
-            savedRecipeReturn.setSourceUrl(recipeUrl);
-
-
-            Executor save = Executors.newSingleThreadExecutor();
-            save.execute(()->{
-                savedRecipeDao.insert(savedRecipeReturn);
+        binding.deleteButton.setOnClickListener(click->{
+            Executor executor = Executors.newSingleThreadExecutor();
+            executor.execute(() -> {
+                savedRecipeDao.deleteById(recipeID);
+                runOnUiThread(() -> {
+                    Toast.makeText(SavedRecipeDetails.this, "Recipe deleted", Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_OK);
+                });
             });
-
-            Snackbar recipeSnack = Snackbar.make(binding.getRoot(), "Recipe Saved", Snackbar.LENGTH_LONG)
-                    .setAction("View Saved Recipes", v ->{
-                        Intent intent = new Intent(RecipeDetails.this, SavedRecipes.class);
-                        startActivity(intent);
-                    });
-            recipeSnack.show();
+            Intent intent = new Intent(SavedRecipeDetails.this, SavedRecipes.class);
+            startActivity(intent);
         });
-
     }
 }

@@ -1,13 +1,11 @@
 package algonquin.cst2335.android_group_project;
 
-import android.content.Context;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "saved_recipes")
-public class SavedRecipe {
+public class SavedRecipeReturn {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "Recipe_ID")
@@ -21,11 +19,11 @@ public class SavedRecipe {
     @ColumnInfo(name = "Source_URL")
     private String sourceUrl;
 
-    public SavedRecipe() {
+    public SavedRecipeReturn() {
 
     }
 
-    public SavedRecipe(String recipeId, String title, String imageUrl, String summary, String sourceUrl) {
+    public SavedRecipeReturn(String recipeId, String title, String imageUrl, String summary, String sourceUrl) {
         this.recipeId = recipeId;
         this.title = title;
         this.imageUrl = imageUrl;
