@@ -1,5 +1,11 @@
 package algonquin.cst2335.android_group_project;
-
+/**
+ * Purpose:SongAPI class is the main class for the application
+ * Author: Shilpi Sarkar
+ * Lab section:012
+ * Date created: March 26, 2024
+ *
+ */
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,8 +49,8 @@ public class SongDetails extends AppCompatActivity {
         String Duration = fromPrevious.getStringExtra("Duration");
         int id = fromPrevious.getIntExtra("id", 0);
 
-        Log.d("MusicRoom", "SongName: " + SongName);
-        Log.d("MusicRoom", "AlbumName1: " + AlbumName);
+        Log.d("SongAPI", "SongName: " + SongName);
+        Log.d("SongAPI", "AlbumName1: " + AlbumName);
 
         TextView songTitleTextView = findViewById(R.id.musicTextViewTitle);
         TextView albumNameTextView = findViewById(R.id.textViewAlbumName);
@@ -58,14 +64,14 @@ public class SongDetails extends AppCompatActivity {
 
         // Set text values to TextViews
         songTitleTextView.setText("Song Name: " + SongName);
-        Log.d("MusicRoom", "AlbumName2: " + AlbumName);
+        Log.d("SongAPI", "AlbumName2: " + AlbumName);
         albumNameTextView.setText("Album Name: " + AlbumName);
-        Log.d("MusicRoom", "AlbumName3: " + albumNameTextView.getText());
+        Log.d("SongAPI", "AlbumName3: " + albumNameTextView.getText());
         durationTextView.setText("Duration: " + Duration);
 
         // Load image using Picasso library
         Picasso.get().load(Cover).into(albumCoverImageView);
-        Log.d("MusicRoom", "MusicReturn1: " + songReturn);
+        Log.d("SongAPI", "MusicReturn1: " + songReturn);
 
         new Thread(() -> {
             allIds = mDAO.getAllIds();
@@ -73,7 +79,7 @@ public class SongDetails extends AppCompatActivity {
         ;
         binding.musicButtonSave.setOnClickListener(clk -> {
 
-            Log.d("MusicRoom", "MusicReturn2: " + songReturn);
+            Log.d("SongAPI", "MusicReturn2: " + songReturn);
             if (allIds.contains(songReturn.getMusicId())) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage("This song already exists in the database.")
