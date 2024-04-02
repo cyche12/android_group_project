@@ -44,4 +44,5 @@
     <string name="delete_recipe">Delete</string>
     <string name="savedRecipe" translatable="false">Saved</string>
     <string name="save_recipe" translatable="false">Save</string>
+    <string name="sun_help">Help</string>
 </resources>

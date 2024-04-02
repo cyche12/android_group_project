@@ -2,6 +2,8 @@ package algonquin.cst2335.android_group_project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -147,5 +149,23 @@ public class Sunrise_Results extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.my_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.sun_help) {
+            // Handle the action for the help item
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 }

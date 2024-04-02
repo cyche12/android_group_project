@@ -41,4 +41,5 @@
     <string name="recipe_help">Help</string>
     <string name="savedimage">savedImage</string>
     <string name="delete_recipe">Delete</string>
+    <string name="sun_help">Help</string>
 </resources>
