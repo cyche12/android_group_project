@@ -41,11 +41,11 @@ public class SongReturn {
 
     /**
      *
-     * @param i
-     * @param t
-     * @param b
-     * @param f
-     * @param r
+     * @param i The music ID, a unique identifier for the song
+     * @param t The URL or path of the song's album image
+     * @param b The name of the album to which the song belongs
+     * @param f The name of the song
+     * @param r The duration of the song
      */
     SongReturn(int i, String t, String b, String f, String r) {
         musicId = i;
@@ -56,7 +56,7 @@ public class SongReturn {
 
     }
 /**
- * @ return music
+ * @ return The unique identifier (ID) of the music item
  * */
     public int getMusicId() {
         return musicId;
@@ -64,7 +64,7 @@ public class SongReturn {
 
     /**
      *
-     * @return
+     * @return The URL or file path of the music item's picture
      */
     public String getMusicPicture() {
         return musicPicture;
@@ -72,7 +72,7 @@ public class SongReturn {
 
     /**
      *
-     * @return
+     * @return The name of the album as a String
      */
     public String getMusicAlbumName() {
         return musicAlbumName;
@@ -80,7 +80,7 @@ public class SongReturn {
 
     /**
      *
-     * @return
+     * @return The name of the song as a String
      */
     public String getMusicSongName() {
         return musicSongName;
@@ -88,7 +88,7 @@ public class SongReturn {
 
     /**
      *
-     * @return
+     * @return The duration of the music track as a String
      */
     public String getMusicDuration() {
         return musicDuration;

@@ -99,7 +99,7 @@ public class ViewFavourites extends AppCompatActivity {
 
             /**
              *
-             * @return
+             * @return returning favourite song from list
              */
 
             @Override
@@ -129,7 +129,7 @@ public class ViewFavourites extends AppCompatActivity {
 
         /**
          *
-         * @param itemView
+         * @param itemView The View for the single item row in the RecyclerView
          */
 
         public MyRowHolder(@NonNull View itemView) {
@@ -153,6 +153,7 @@ public class ViewFavourites extends AppCompatActivity {
                 }).start();
                 displayToast();
             });
+
 
             itemView.setOnClickListener(clk -> {
                 int position = getAdapterPosition();

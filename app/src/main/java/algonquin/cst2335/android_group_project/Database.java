@@ -12,7 +12,9 @@ import androidx.room.RoomDatabase;
 public abstract class Database extends RoomDatabase {
     /**
      *
-     * @return
+     * @return An instance of SongReturnDAO, ready for use to perform data operations on
+     *  SongReturn entities.
+     *
      */
     public abstract SongReturnDAO cmDAO();
 }

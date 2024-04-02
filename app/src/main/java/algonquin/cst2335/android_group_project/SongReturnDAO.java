@@ -25,14 +25,14 @@ public interface SongReturnDAO {
 
     /**
      *
-     * @return
+     * @return song from SongReturn
      */
     @Query("Select * from SongReturn")
     public List<SongReturn> getAllSongs();
 
     /**
      *
-     * @return
+     * @return id from SongReturn
      */
     @Query("Select id from SongReturn")
     public List<Integer> getAllIds();
