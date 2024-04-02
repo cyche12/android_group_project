@@ -1,9 +1,9 @@
 package algonquin.cst2335.android_group_project;
 /**
- * Purpose:SongAPI class is the main class for the application
+ * Purpose:SongDetails class is the process for the application
  * Author: Shilpi Sarkar
  * Lab section:012
- * Date created: March 26, 2024
+ * Date created: March 31, 2024
  *
  */
 import android.content.Intent;
@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+
 import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
@@ -26,9 +27,28 @@ import algonquin.cst2335.android_group_project.databinding.ActivitySongDetailsBi
 
 
 public class SongDetails extends AppCompatActivity {
+    /**
+     * The binding instance for the ActivitySongDetails layout.
+     */
     private ActivitySongDetailsBinding binding;
+    /**
+     * An instance of SongReturnDAO providing access to database operations for the
+     *  entities.
+     */
     SongReturnDAO mDAO;
+    /**
+     * A list holding integer values, commonly used to store unique identifiers or other
+     * numeric data
+     */
     List<Integer> allIds = new ArrayList<>();
+
+    /**
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
