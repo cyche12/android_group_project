@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,13 +55,13 @@ public class Sunrise_Results extends AppCompatActivity {
         resultsRecyclerView.setAdapter(resultsAdapter);
 
         Button saveButton = binding.saveButton;
-        saveButton.setOnClickListener(click -> saveSearchResult());
+        saveButton.setOnClickListener(click -> saveSearchResult(latitude, longitude));
 
         Button historyButton = binding.historyButton;
         historyButton.setOnClickListener(click -> loadAndDisplayPastSearchResults());
 
-        RecyclerView historyRecyclerView = binding.resultsRecyclerView; // Corrected to use resultsRecyclerView
-        historyRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // Use separate layout manager
+        RecyclerView historyRecyclerView = binding.resultsRecyclerView;
+        historyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         historyAdapter = new SunHistoryAdapter(new ArrayList<>());
         historyRecyclerView.setAdapter(historyAdapter);
 
@@ -123,16 +124,17 @@ public class Sunrise_Results extends AppCompatActivity {
                 }
 
                 // Update the results RecyclerView adapter with the loaded data
-                runOnUiThread(() -> resultsAdapter.addNewResults(resultsData));
+                runOnUiThread(() -> resultsAdapter.addPastResults(resultsData));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
     }
 
-    private void saveSearchResult() {
+    private void saveSearchResult(String latitude, String longitude) {
         String currentSearchResult = "Latitude: " + latitude + ", Longitude: " + longitude;
-        historyAdapter.addPastResults(Collections.singletonList(currentSearchResult)); // Add the current search result to historyAdapter
+        historyAdapter.addPastResults(Collections.singletonList(currentSearchResult));
+        saveToRoomDatabase(latitude, longitude, "", ""); // Only save latitude and longitude for now
     }
 
     private void saveToRoomDatabase(String latitude, String longitude, String sunriseTime, String sunsetTime) {
@@ -162,9 +164,19 @@ public class Sunrise_Results extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.sun_help) {
+            showHelpDialog();
             return true;
         } else {
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void showHelpDialog() {
+        // Display the help dialog with instructions
+        new AlertDialog.Builder(this)
+                .setTitle("How to Use")
+                .setMessage("How to use the app:\n\n- Enter your longitude and latitude in the fields below, then click 'Lookup' when ready.\n- Save your searches with the Save button.\n- View saved searches with the History button.\n-")
+                .setPositiveButton("OK", null)
+                .show();
     }
 }

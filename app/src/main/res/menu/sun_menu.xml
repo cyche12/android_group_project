@@ -1,11 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/sun_help"
         android:title="@string/sun_help"
-        android:orderInCategory="101"
+        android:orderInCategory="100"
         android:tooltipText="Click here for help on using the sunrise feature"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/sun_favorite"
+        android:icon="@drawable/music_favourite"
+        app:showAsAction="always" />
+
+
 </menu>

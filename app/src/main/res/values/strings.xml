@@ -6,7 +6,7 @@
     <string name="query_button_string">Lookup</string>
     <string name="back_button">New Search</string>
     <string name="Piyalee_Link">Piyalee\'s App</string>
-    <string name="Gabriel_Link">Gabriel\'s_App</string>
+    <string name="Gabriel_Link">Gabriel\'s App</string>
     <string name="Shilpi_Link">Shilpi\'s App</string>
     <string name="Jake_Link">Jake\'s App</string>
     <string name="search_hint">Please enter word for the definition</string>
@@ -45,4 +45,5 @@
     <string name="savedRecipe" translatable="false">Saved</string>
     <string name="save_recipe" translatable="false">Save</string>
     <string name="sun_help">Help</string>
+    <string name="sun_favorite">Favorite</string>
 </resources>
