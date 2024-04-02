@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.navigation:navigation-ui:2.7.7")
     annotationProcessor("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.appcompat:appcompat:1.6.1")

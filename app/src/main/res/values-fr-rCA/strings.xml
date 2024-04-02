@@ -38,7 +38,7 @@
     <string name="save_search_result">Save Search Result</string>
     <string name="past_searches">Past Searches</string>
     <string name="history_recycler_view_description">Past Search Results:</string>
-    <string name="save_recipe">Save</string>
     <string name="recipe_help">Help</string>
     <string name="savedimage">savedImage</string>
+    <string name="delete_recipe">Delete</string>
 </resources>
