@@ -21,14 +21,19 @@ public class Sunrise_Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SunriseSearchBinding binding = SunriseSearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        Intent homeIntent = new Intent(Sunrise_Search.this, MainActivity.class);
         EditText latitudeEditText = binding.xCoordinate;
         EditText longitudeEditText = binding.yCoordinate;
         Button searchButton = binding.searchButton;
+        Button homeButton = binding.homeButton;
 
-        searchButton.setOnClickListener(view -> {
+        homeButton.setOnClickListener(click -> startActivity(homeIntent));
+
+
+        searchButton.setOnClickListener(click -> {
             String latitude = latitudeEditText.getText().toString().trim();
             String longitude = longitudeEditText.getText().toString().trim();
+
 
 
             if (!latitude.isEmpty() && !longitude.isEmpty()) {

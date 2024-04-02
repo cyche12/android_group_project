@@ -153,7 +153,7 @@ public class Sunrise_Results extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_menu, menu);
+        getMenuInflater().inflate(R.menu.sun_menu, menu);
         return true;
     }
 
