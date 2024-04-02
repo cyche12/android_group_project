@@ -7,33 +7,33 @@
 
     <!-- Album Name -->
 
+    <!-- Save Button -->
+
     <TextView
         android:id="@+id/musicTextViewTitle"
         android:layout_width="357dp"
         android:layout_height="42dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="136dp"
         android:text="Song Title"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/musicImageViewAlbumCover" />
 
     <ImageView
         android:id="@+id/musicImageViewAlbumCover"
-        android:layout_width="344dp"
-        android:layout_height="302dp"
+        android:layout_width="206dp"
+        android:layout_height="203dp"
         android:layout_below="@id/musicTextViewTitle"
         android:layout_centerHorizontal="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.186" />
-
-    <!-- Save Button -->
+        app:layout_constraintVertical_bias="0.054" />
 
     <TextView
         android:id="@+id/musicTextViewDuration"
@@ -41,8 +41,8 @@
         android:layout_height="33dp"
         android:layout_below="@id/musicImageViewAlbumCover"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="52dp"
         android:text="Duration"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +54,8 @@
         android:layout_height="38dp"
         android:layout_below="@id/musicTextViewDuration"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="96dp"
         android:text="Album Name"
         android:textSize="16sp"
         android:visibility="visible"

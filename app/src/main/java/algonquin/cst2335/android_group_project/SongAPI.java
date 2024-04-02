@@ -36,7 +36,7 @@ import java.util.ArrayList;
 
 import algonquin.cst2335.android_group_project.databinding.ActivitySongRoomBinding;
 
-public class SongRoom extends AppCompatActivity {
+public class SongAPI extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivitySongRoomBinding binding;
@@ -54,7 +54,7 @@ public class SongRoom extends AppCompatActivity {
         TextView messageText;
 
         if (item.getItemId() == R.id.music_item_2) {
-            Intent intent = new Intent(SongRoom.this, ViewFavourites.class);
+            Intent intent = new Intent(SongAPI.this, ViewFavourites.class);
             startActivity(intent);
             return true;
         }
@@ -167,7 +167,7 @@ public class SongRoom extends AppCompatActivity {
                                                         Log.e("testError", "Error: " + error.getMessage());
                                                     }
                                                 });
-                                        MySingleton.getInstance(SongRoom.this).addToRequestQueue(jsonObjectRequest2);
+                                        MySingleton.getInstance(SongAPI.this).addToRequestQueue(jsonObjectRequest2);
                                     } else {
                                         Log.e("MusicRoom", "No tracklist URL found or it's empty");
                                     }
@@ -183,7 +183,7 @@ public class SongRoom extends AppCompatActivity {
                                 Log.e("testError", "Error: " + error.getMessage());
                             }
                         });
-                MySingleton.getInstance(SongRoom.this).addToRequestQueue(jsonObjectRequest);
+                MySingleton.getInstance(SongAPI.this).addToRequestQueue(jsonObjectRequest);
             }
         });
         binding.recyclerView.setAdapter(myAdapter = new RecyclerView.Adapter<MyRowHolder>() {
@@ -236,7 +236,7 @@ public class SongRoom extends AppCompatActivity {
                 SongReturn objDisplay = music_song_list.get(position);
                 Log.d("MusicRoom", "objDisplaySongName: " + objDisplay.getMusicSongName());
                 Log.d("MusicRoom", "objDisplaySongName: " + objDisplay.getMusicAlbumName());
-                Intent music_details = new Intent(SongRoom.this, SongDetails.class);
+                Intent music_details = new Intent(SongAPI.this, SongDetails.class);
                 music_details.putExtra("SongNames", objDisplay.getMusicSongName());
                 music_details.putExtra("AlbumNames", objDisplay.getMusicAlbumName());
                 music_details.putExtra("Cover", objDisplay.getMusicPicture());

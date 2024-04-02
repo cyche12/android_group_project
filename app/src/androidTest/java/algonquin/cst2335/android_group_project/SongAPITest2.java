@@ -32,11 +32,11 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class SongRoomTest2 {
+public class SongAPITest2 {
 
     @Rule
-    public ActivityScenarioRule<SongRoom> mActivityScenarioRule =
-            new ActivityScenarioRule<>(SongRoom.class);
+    public ActivityScenarioRule<SongAPI> mActivityScenarioRule =
+            new ActivityScenarioRule<>(SongAPI.class);
 
     @Test
     public void songRoomTest2() {
