@@ -18,7 +18,7 @@ public interface SongReturnDAO {
 
     /**
      *
-     * @param m
+     * @param m The SongReturn entity to be inserted into the database.
      */
     @Insert
     void insertSong(SongReturn m);
@@ -39,7 +39,7 @@ public interface SongReturnDAO {
 
     /**
      *
-     * @param m
+     * @param m The ongReturn entity to be deleted from the database.
      */
     @Delete
     void deleteSong(SongReturn m);
