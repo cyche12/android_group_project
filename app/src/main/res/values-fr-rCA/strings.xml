@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_bar">Chercher Recette</string>
+    <string name="search_button">Chercher</string>
+    <string name="title">Titre</string>
+    <string name="recipe_id">ID Recette</string>
+    <string name="summary">Sommaire</string>
+    <string name="savedRecipe">Recettes Sauvés</string>
+    <string name="delete_recipe">Supprimer</string>
+    <string name="save_recipe">Sauver</string>
+    <string name="recipe_help">Aide</string>
+</resources>

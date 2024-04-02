@@ -77,7 +77,7 @@ public class RecipeDetails extends AppCompatActivity {
 
         String recipeId = getIntent().getStringExtra("recipeId");
 
-        String url = "https://api.spoonacular.com/recipes/"+ recipeId +"/information?apiKey=a91cbc1da183408a8b42d047304e7bf4";
+        String url = "https://api.spoonacular.com/recipes/"+ recipeId +"/information?apiKey=3eede3908bc14abfa1619421c6fcefea";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

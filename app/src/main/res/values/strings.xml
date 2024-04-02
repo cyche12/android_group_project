@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">android_group_project</string>
+    <string name="app_name" translatable="false">android_group_project</string>
     <string name="search_bar">Search Recipe</string>
     <string name="search_button">Search</string>
     <string name="title">Title</string>
     <string name="recipe_id">Recipe ID</string>
     <string name="summary">Summary</string>
-    <string name="recipe_URL">Spoonacular Source Url</string>
+    <string name="recipe_URL" translatable="false">Spoonacular Source Url</string>
     <string name="savedRecipe">Saved Recipes</string>
     <string name="delete_recipe">Delete</string>
     <string name="save_recipe">Save</string>

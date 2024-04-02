@@ -7,8 +7,9 @@
 
     <TextView
         android:id="@+id/recipeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="392dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="12dp"
         android:text="@string/title"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,8 +17,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="218dp"
-        android:layout_height="205dp"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipeTitle"
         tools:srcCompat="@tools:sample/avatars" />
@@ -26,6 +28,7 @@
         android:id="@+id/recipeID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         android:text="@string/recipe_id"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
