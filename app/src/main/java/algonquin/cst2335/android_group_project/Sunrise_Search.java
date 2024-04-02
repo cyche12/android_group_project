@@ -44,7 +44,7 @@ public class Sunrise_Search extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_menu, menu);
+        getMenuInflater().inflate(R.menu.sun_menu, menu);
         return true;
     }
 
@@ -52,11 +52,6 @@ public class Sunrise_Search extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.sun_help) {
-            // Handle the action for the help item
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
+        return true;
     }
 }
