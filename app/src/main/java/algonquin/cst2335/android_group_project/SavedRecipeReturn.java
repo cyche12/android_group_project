@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 /**
+ * Purpose: Constructors for saved recipes
+ * Creation Date: 31/03/2024
  *@author Gabriel Hubert
  *@version 1.0
  */

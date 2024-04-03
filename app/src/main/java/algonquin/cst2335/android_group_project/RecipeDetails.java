@@ -30,6 +30,8 @@ import java.util.concurrent.Executors;
 
 import algonquin.cst2335.android_group_project.databinding.ActivityRecipeDetailsBinding;
 /**
+ * Purpose: Display recipe details
+ * Creation Date: 30/03/2024
  *@author Gabriel Hubert
  *@version 1.0
  */

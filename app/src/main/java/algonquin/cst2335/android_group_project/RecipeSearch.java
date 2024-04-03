@@ -46,6 +46,8 @@ import java.util.ArrayList;
 import algonquin.cst2335.android_group_project.databinding.ActivityRecipeBinding;
 import algonquin.cst2335.android_group_project.databinding.RecipeSearchBinding;
 /**
+ * Purpose:
+ * Creation Date:
  *@author Gabriel Hubert
  *@version 1.0
  */

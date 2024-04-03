@@ -8,6 +8,8 @@ import androidx.room.Query;
 
 import java.util.List;
 /**
+ * Purpose: DAO for the recipe database
+ * Creation Date: 31/03/2024
  *@author Gabriel Hubert
  *@version 1.0
  */

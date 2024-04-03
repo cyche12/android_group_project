@@ -32,6 +32,8 @@ import java.util.concurrent.Executors;
 import algonquin.cst2335.android_group_project.databinding.ActivityRecipeDetailsBinding;
 import algonquin.cst2335.android_group_project.databinding.ActivitySavedRecipeDetailsBinding;
 /**
+ * Purpose: Displays the details of saved recipes
+ * Creation Date: 31/03/2024
  *@author Gabriel Hubert
  *@version 1.0
  */
