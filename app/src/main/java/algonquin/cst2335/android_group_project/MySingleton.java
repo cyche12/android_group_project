@@ -16,7 +16,6 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
 public class MySingleton {
-
     private static MySingleton instance;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
@@ -91,5 +90,4 @@ public class MySingleton {
 
         return imageLoader;
     }
-
 }

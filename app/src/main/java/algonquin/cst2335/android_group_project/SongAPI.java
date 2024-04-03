@@ -39,7 +39,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-
 import algonquin.cst2335.android_group_project.databinding.ActivitySongRoomBinding;
 
 public class SongAPI extends AppCompatActivity {

@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/jake_item"
-        android:title="@string/Jake_Link">
+    <item
+        android:id="@+id/item1"
+        android:icon="@drawable/sunrise"
+        android:title="@string/Jake_Link"
+        app:showAsAction="always"/>
 
-    </item>
+    <item
+        android:id="@+id/item2"
+        android:title="@string/Shilpi_Link"
+        android:icon="@drawable/note"
+        app:showAsAction="always"/>
 
-    <item android:id="@+id/shilpi_item"
-        android:title="@string/Shilpi_Link">
+    <item
+        android:id="@+id/item3"
+        android:title="@string/Piyalee_Link"
+        android:icon="@drawable/dicitonary"
+        app:showAsAction="always"/>
 
-    </item>
-
-    <item android:id="@+id/piyalee_item"
-        android:title="@string/Piyalee_Link">
-
-    </item>
-
-    <item android:id="@+id/gabriel_item"
-          android:title="@string/Gabriel_Link">
-
-    </item>
+    <item
+        android:id="@+id/item4"
+        android:title="@string/Gabriel_Link"
+        app:showAsAction="always"
+        android:icon="@drawable/recipebook" />
 
 </menu>

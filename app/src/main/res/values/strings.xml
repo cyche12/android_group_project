@@ -1,13 +1,49 @@
 <resources>
-    <string name="app_name">android_group_project</string>
+    <string name="app_name">Home</string>
+    <string name="title_name">Sunrise/Sunset App</string>
+    <string name="Latitude_string">Latitude</string>
+    <string name="Longitude_string">Longitude</string>
+    <string name="query_button_string">Lookup</string>
+    <string name="back_button">New Search</string>
+    <string name="Piyalee_Link">Piyalee\'s App</string>
+    <string name="Gabriel_Link">Gabriel\'s App</string>
+    <string name="Shilpi_Link">Shilpi\'s App</string>
+    <string name="Jake_Link">Jake\'s App</string>
+    <string name="search_hint">Please enter word for the definition</string>
+    <string name="search_button_text">Submit</string>
+    <string name="dictionary">Dictionary</string>
+    <string name="view_saved_searches_button_text">Past Search Results</string>
+    <string name="artist_image">Artist Image</string>
+    <string name="artist_name">Artist Name</string>
+    <string name="album_cover" translatable="false" />
+    <string name="album_name" translatable="false" />
+    <string name="duration" translatable="false" />
+    <string name="app_name1">DeezerSongSearch</string>
+    <string name="arist_search_hint">Enter artist name</string>
+    <string name="search">Search</string>
+    <string name="main_page">Home</string>
+    <string name="songSearch">Search new Song</string>
+    <string name="search_bar">Search Recipe</string>
+    <string name="search_button">Search</string>
+    <string name="title">Title</string>
+    <string name="recipe_id">Recipe ID</string>
+    <string name="summary">Summary</string>
+    <string name="recipe_URL">Spoonacular Source Url</string>
     <string name="dict_search_hint">Please enter word for Meaning</string>
     <string name="dict_search_button_text">Submit</string>
     <string name="dict_save_button_text">Save Definitions</string>
     <string name="dict_view_button_text">View Search Term</string>
     <string name="dict_dictionary">DICTIONARY</string>
     <string name="dhelp">Help</string>
-    <string name="Jake_Link">Jake/s_App</string>
-    <string name="Shilpi_Link">Shilpi/s_App</string>
-    <string name="Piyalee_Link">Piyalee/s_App</string>
-    <string name="Gabriel_Link">Gabriel/s_App</string>
+    <string name="save_search_result">Save Search Result</string>
+    <string name="past_searches">Past Searches</string>
+    <string name="history_recycler_view_description">Past Search Results:</string>
+    <string name="saved_recipe">Save</string>
+    <string name="recipe_help">Help</string>
+    <string name="savedimage">savedImage</string>
+    <string name="delete_recipe">Delete</string>
+    <string name="savedRecipe" translatable="false">Saved</string>
+    <string name="save_recipe" translatable="false">Save</string>
+    <string name="sun_help">Help</string>
+    <string name="sun_favorite">Favorite</string>
 </resources>
