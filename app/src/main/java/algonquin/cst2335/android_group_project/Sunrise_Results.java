@@ -120,14 +120,13 @@ public class Sunrise_Results extends AppCompatActivity {
 
     private void saveToRoomDatabase(String latitude, String longitude, String sunriseTime, String sunsetTime) {
         ExecutorService databaseExecutor = Executors.newSingleThreadExecutor();
+        Sunrise_Data newData = new Sunrise_Data();
+        newData.setLatitude(latitude);
+        newData.setLongitude(longitude);
+        newData.setSunriseTime(sunriseTime);
+        newData.setSunsetTime(sunsetTime);
         databaseExecutor.execute(() -> {
             try {
-                Sunrise_Data newData = new Sunrise_Data();
-                newData.setLatitude(latitude);
-                newData.setLongitude(longitude);
-                newData.setSunriseTime(sunriseTime);
-                newData.setSunsetTime(sunsetTime);
-
                 SunriseApplication.getDatabase().sunDao().insert(newData);
 
                 // Display Toast message on UI thread
