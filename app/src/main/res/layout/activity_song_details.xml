@@ -15,7 +15,7 @@
         android:layout_height="42dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="136dp"
-        android:text="Song Title"
+        android:text="@string/song_title"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.296"
@@ -43,7 +43,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="24dp"
         android:layout_marginTop="52dp"
-        android:text="Duration"
+        android:text="@string/duration"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/musicTextViewTitle" />
@@ -56,7 +56,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="96dp"
-        android:text="Album Name"
+        android:text="@string/album_name"
         android:textSize="16sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +70,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="120dp"
         android:layout_marginBottom="16dp"
-        android:text="Save"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

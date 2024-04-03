@@ -125,7 +125,10 @@ public class SongAPI extends AppCompatActivity {
         return true;
     }
 
-
+    private void clearRecycleView(){
+        music_song_list.clear();
+        myAdapter.notifyDataSetChanged();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,6 +142,7 @@ public class SongAPI extends AppCompatActivity {
 
         musicSearchEditText = binding.MusicSearch;
         binding.musicSearchButton.setOnClickListener(click -> {
+            clearRecycleView();
             String query = musicSearchEditText.getText().toString().trim();
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("Artist Name", MusicArtistName.getText().toString());

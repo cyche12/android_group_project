@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="song_title">Titre</string>
+    <string name="duration">Duration</string>
+    <string name="album_name">Nom de l\'Album</string>
+    <string name="save">Sauver</string>
+    <string name="name">Nom</string>
+    <string name="search">Chercher</string>
+    <string name="song_title1">Titre 1</string>
+    <string name="song_title2">Titre 2</string>
+</resources>
