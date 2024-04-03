@@ -17,7 +17,7 @@
     <string name="artist_name">Artist Name</string>
     <string name="album_cover" translatable="false" />
     <string name="app_name1">Deezer Recherche de musique</string>
-    <string name="arist_search_hint">Entrez le nom de l'artiste</string>
+    <string name="arist_search_hint">Entrez le nom de l\'artiste</string>
     <string name="main_page">Maison</string>
     <string name="songSearch">Search new Song</string>
     <string name="recipe_URL">Spoonacular Source Url</string>
