@@ -45,14 +45,21 @@ import java.util.ArrayList;
 
 import algonquin.cst2335.android_group_project.databinding.ActivityRecipeBinding;
 import algonquin.cst2335.android_group_project.databinding.RecipeSearchBinding;
-
+/**
+ *@author Gabriel Hubert
+ *@version 1.0
+ */
 public class RecipeSearch extends AppCompatActivity {
-
+    /** Allows to interact with views. */
     ActivityRecipeBinding binding;
+    /** Sets an adapter for the Recycle View. */
     private RecyclerView.Adapter myAdapter;
+    /** Array to hold recipes. */
     ArrayList<RecipeReturn> recipes;
+    /** View Model for the recipes. */
     RecipeViewModel recipeModel;
 
+    /** Clears the Recycle View. */
     private void clearRecyclerView() {
         recipes.clear();
         myAdapter.notifyDataSetChanged();
@@ -182,17 +189,24 @@ public class RecipeSearch extends AppCompatActivity {
         binding.recipeRecycleView.setLayoutManager(new LinearLayoutManager(this));
 
         recipeModel.recipes.observe(this, newRecipes -> {
-            // Update the UI with the new list of recipes
             myAdapter.notifyDataSetChanged();
         });
     }
-    public class MyRowHolder extends RecyclerView.ViewHolder {
 
+    public class MyRowHolder extends RecyclerView.ViewHolder {
+        /** This holds the text for the recipe title. */
         TextView titleText;
+        /** This holds the text for the recipe id. */
         TextView idText;
+        /** This holds the image for the recipe image. */
         ImageView recipeImage;
+        /** This sets the context. */
         Context context;
 
+        /**
+         * This function adds the set content to the recycler view.
+         * @param itemView The item in the recycler view.
+         */
         public MyRowHolder(@NonNull View itemView) {
             super(itemView);
             titleText = itemView.findViewById(R.id.recipeTitle);
@@ -202,10 +216,8 @@ public class RecipeSearch extends AppCompatActivity {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Get the recipe ID from the clicked item
                     String recipeId = idText.getText().toString();
 
-                    // Start the new activity and pass the recipe ID as an extra
                     Intent intent = new Intent(context, RecipeDetails.class);
                     intent.putExtra("recipeId", recipeId);
                     context.startActivity(intent);

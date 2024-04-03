@@ -7,7 +7,10 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import java.util.List;
-
+/**
+ *@author Gabriel Hubert
+ *@version 1.0
+ */
 @Dao
 public interface SavedRecipeDao {
     @Insert
