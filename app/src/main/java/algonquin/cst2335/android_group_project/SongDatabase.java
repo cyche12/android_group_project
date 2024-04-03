@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase;
 
 @androidx.room.Database(entities = {SongReturn.class}, version = 1)
 
-public abstract class Database extends RoomDatabase {
+public abstract class SongDatabase extends RoomDatabase {
     /**
      *
      * @return An instance of SongReturnDAO, ready for use to perform data operations on

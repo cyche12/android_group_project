@@ -59,7 +59,7 @@ public class ViewFavourites extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityViewFavouritesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Database db = Room.databaseBuilder(this.getApplicationContext(), Database.class, "Song_DB").build();
+        SongDatabase db = Room.databaseBuilder(this.getApplicationContext(), SongDatabase.class, "Song_DB").build();
         mDAO = db.cmDAO();
 
 
