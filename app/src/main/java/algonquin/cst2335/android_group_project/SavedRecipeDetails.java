@@ -31,13 +31,24 @@ import java.util.concurrent.Executors;
 
 import algonquin.cst2335.android_group_project.databinding.ActivityRecipeDetailsBinding;
 import algonquin.cst2335.android_group_project.databinding.ActivitySavedRecipeDetailsBinding;
-
+/**
+ * Purpose: Displays the details of saved recipes
+ * Creation Date: 31/03/2024
+ *@author Gabriel Hubert
+ *@version 1.0
+ */
 public class SavedRecipeDetails extends AppCompatActivity {
+    /** String to hold the recipe summary. */
     String summary;
+    /** String to hold the recipe url. */
     String recipeUrl;
+    /** String to hold the recipe image url. */
     String imageUrl;
+    /** String to hold the recipe title. */
     String title;
+    /** String to hold the recipe id. */
     String recipeID;
+    /** Allows to interact with views. */
     ActivitySavedRecipeDetailsBinding binding;
 
     @Override
