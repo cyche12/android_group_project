@@ -42,14 +42,39 @@ import java.util.ArrayList;
 import algonquin.cst2335.android_group_project.databinding.ActivitySongRoomBinding;
 
 public class SongAPI extends AppCompatActivity {
+    /**
+     * Configuration settings for the  AppBar
+     */
 
     private AppBarConfiguration appBarConfiguration;
+    /**
+     * An instance of the binding class representing the layout
+     */
     private ActivitySongRoomBinding binding;
+    /**
+     *The RequestQueue instance dedicated to handling all network requests for music-related data.
+     */
     private RequestQueue musicRequestQueue;
+    /**
+     * An  EditText widget that allows users to enter music search queries.
+     */
     private EditText musicSearchEditText;
+    /**
+     * A  Button used to trigger the search operation for music content based on the query
+     */
     private Button musicSearchButton;
+    /**
+     * The adapter for a  RecyclerView that handles the layout and binding of individual
+     */
     private RecyclerView.Adapter myAdapter;
+    /**
+     * An EditText field for entering or displaying the name of a music artist.
+     */
     EditText MusicArtistName;
+    /**
+     * A list that stores instances of SongReturn
+     */
+
     ArrayList<SongReturn> music_song_list = new ArrayList<>();
 
 
@@ -99,7 +124,10 @@ public class SongAPI extends AppCompatActivity {
         return true;
     }
 
-
+    private void clearRecycleView(){
+        music_song_list.clear();
+        myAdapter.notifyDataSetChanged();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,6 +141,7 @@ public class SongAPI extends AppCompatActivity {
 
         musicSearchEditText = binding.MusicSearch;
         binding.musicSearchButton.setOnClickListener(click -> {
+            clearRecycleView();
             String query = musicSearchEditText.getText().toString().trim();
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("Artist Name", MusicArtistName.getText().toString());

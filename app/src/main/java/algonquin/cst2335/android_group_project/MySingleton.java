@@ -16,8 +16,19 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
 public class MySingleton {
+    /**
+     *The single instance of the class
+     */
+
     private static MySingleton instance;
+    /**
+     * The RequestQueue for managing network requests
+     */
     private RequestQueue requestQueue;
+    /**
+     * The ImageLoader for loading images from the network, caching them, and displaying
+     * them in the application's UI
+     */
     private ImageLoader imageLoader;
     private static Context ctx;
     /**
@@ -90,4 +101,5 @@ public class MySingleton {
 
         return imageLoader;
     }
+
 }
