@@ -2,6 +2,21 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="RecipeDeletionTest">
+        <State />
+      </entry>
+      <entry key="RecipeHelpTest">
+        <State />
+      </entry>
+      <entry key="RecipeSavedTest">
+        <State />
+      </entry>
+      <entry key="RecipeSearchTest2">
+        <State />
+      </entry>
+      <entry key="Tests in 'algonquin.cst2335.android_group_project'">
+        <State />
+      </entry>
       <entry key="app">
         <State />
       </entry>
