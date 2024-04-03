@@ -2,10 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="MusicRoomTest2">
+      <entry key="SongHelpTest">
         <State />
       </entry>
-      <entry key="MusicRoomTest2 (1)">
+      <entry key="SongSaveTest">
+        <State />
+      </entry>
+      <entry key="SongSearchTest">
+        <State />
+      </entry>
+      <entry key="SongdeleteTest">
+        <State />
+      </entry>
+      <entry key="SongdetailsTest">
         <State />
       </entry>
       <entry key="app">
