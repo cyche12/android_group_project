@@ -34,6 +34,7 @@
     <string name="dict_save_button_text">Enregistrer les définitions</string>
     <string name="dict_view_button_text">Afficher le terme de recherche</string>
     <string name="dict_dictionary">DICTIONNAIRE</string>
+    <string name="dict_title_text">Terme(s) de recherche enregistré(s)</string>
     <string name="dhelp">Aide</string>
     <string name="save_search_result">Save Search Result</string>
     <string name="past_searches">Past Searches</string>
