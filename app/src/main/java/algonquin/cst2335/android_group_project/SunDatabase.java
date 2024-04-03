@@ -11,15 +11,14 @@ import androidx.room.RoomDatabase;
  * and provides an abstract method to get an instance of {@link SunDao}.
  * Purpose of the file: To define the Room database for the sunrise application,
  * including the entity it comprises and the DAO it provides access to.
- * Author:
- * Lab Section:
+ * Author:Jake Elliott
  */
 
 @Database(entities = {Sunrise_Data.class}, version = 1, exportSchema = false)
 public abstract class SunDatabase extends RoomDatabase {
 
     /**
-     * Provides access to the DAO (Data Access Object) for sunrise data operations.
+     * Provides access to the DAO for sunrise data.
      *
      * @return The DAO interface for interacting with sunrise data in the database.
      */

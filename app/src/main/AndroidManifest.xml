@@ -42,6 +42,10 @@
             android:exported="true"/>
         <activity android:name=".ViewFavourites"
             android:exported="true"/>
+        <activity android:name=".SunriseHistory"
+            android:exported="true"/>
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
