@@ -15,7 +15,6 @@
     <string name="view_saved_searches_button_text">Résultats de recherche antérieurs</string>
     <string name="artist_image">Artist Image</string>
     <string name="artist_name">Artist Name</string>
-    <string name="album_cover" translatable="false" />
     <string name="app_name1">Deezer Recherche de musique</string>
     <string name="arist_search_hint">Entrez le nom de l\'artiste</string>
     <string name="main_page">Maison</string>
