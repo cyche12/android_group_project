@@ -15,12 +15,8 @@
     <string name="view_saved_searches_button_text">Past Search Results</string>
     <string name="artist_image">Artist Image</string>
     <string name="artist_name">Artist Name</string>
-    <string name="album_cover" translatable="false" />
-    <string name="album_name" translatable="false" />
-    <string name="duration" translatable="false" />
     <string name="app_name1">DeezerSongSearch</string>
     <string name="arist_search_hint">Enter artist name</string>
-    <string name="search">Search</string>
     <string name="main_page">Home</string>
     <string name="songSearch">Search new Song</string>
     <string name="search_bar">Search Recipe</string>
@@ -43,8 +39,16 @@
     <string name="recipe_help">Help</string>
     <string name="savedimage">savedImage</string>
     <string name="delete_recipe">Delete</string>
-    <string name="savedRecipe" translatable="false">Saved</string>
-    <string name="save_recipe" translatable="false">Save</string>
+    <string name="savedRecipe">Saved</string>
+    <string name="save_recipe">Save</string>
     <string name="sun_help">Help</string>
     <string name="sun_favorite">Favorite</string>
+    <string name="song_title">Song Title</string>
+    <string name="duration">Duration</string>
+    <string name="album_name">Album Name</string>
+    <string name="save">Save</string>
+    <string name="name">Name</string>
+    <string name="search">Search</string>
+    <string name="song_title1">Song Title1</string>
+    <string name="song_title2">Song Title2</string>
 </resources>

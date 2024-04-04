@@ -1,6 +1,7 @@
     //Student: Jake Elliott//
     //Student #040732505//
     //Class: CST2335//
+    //Creation Date: 25/3/24//
     //Group Members: Jake Elliott, Gabriel Hubert, Shilpi Sarkar, Piyalee Mangaraj//
     //Project: Final Group Project//
     //App: Sunrise/Sunset App//
@@ -71,13 +72,13 @@
             startActivity(new Intent(MainActivity.this, Sunrise_Search.class)); //Sunrise/Sunset Search API class with item1
             return true;
         } else if (id == R.id.item2) {
-            startActivity(new Intent(MainActivity.this, RecipeSearch.class)); //Recipe Search API class with item2
+            startActivity(new Intent(MainActivity.this, SongAPI.class)); //Recipe Search API class with item2
             return true;
         } else if (id == R.id.item3) {
             startActivity(new Intent(MainActivity.this, DictionaryMainActivity.class)); // Dictionary API class with item3
             return true;
         } else if (id == R.id.item4) {
-            startActivity(new Intent(MainActivity.this, SongAPI.class)); //Song API class with item4
+            startActivity(new Intent(MainActivity.this, RecipeSearch.class)); //Song API class with item4
             return true;
         } else {
             return super.onOptionsItemSelected(item);

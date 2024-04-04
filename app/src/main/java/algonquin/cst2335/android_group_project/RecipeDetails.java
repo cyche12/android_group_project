@@ -29,13 +29,24 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import algonquin.cst2335.android_group_project.databinding.ActivityRecipeDetailsBinding;
-
+/**
+ * Purpose: Display recipe details
+ * Creation Date: 30/03/2024
+ *@author Gabriel Hubert
+ *@version 1.0
+ */
 public class RecipeDetails extends AppCompatActivity {
+    /** String to hold the recipe summary. */
     String summary;
+    /** String to hold the recipe URL. */
     String recipeUrl;
+    /** String to hold the recipe image URL. */
     String imageUrl;
+    /** String to hold the recipe title. */
     String title;
+    /** String to hold the recipe id. */
     String recipeID;
+    /** Allows to interact with views. */
     ActivityRecipeDetailsBinding binding;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

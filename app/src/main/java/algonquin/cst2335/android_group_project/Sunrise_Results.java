@@ -1,3 +1,11 @@
+//Student: Jake Elliott//
+//Student #040732505//
+//Class: CST2335//
+//Creation Date: 25/3/24//
+//Group Members: Jake Elliott, Gabriel Hubert, Shilpi Sarkar, Piyalee Mangaraj//
+//Project: Final Group Project//
+//App: Sunrise/Sunset App//
+
 package algonquin.cst2335.android_group_project;
 
 import android.content.Intent;
@@ -36,6 +44,7 @@ public class Sunrise_Results extends AppCompatActivity {
     private String currentSunrise, currentSunset;
     private String latitude, longitude;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +62,9 @@ public class Sunrise_Results extends AppCompatActivity {
         resultsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         resultsAdapter = new SunResultsAdapter();
         resultsRecyclerView.setAdapter(resultsAdapter);
-
+        Intent homeIntent = new Intent(this, MainActivity.class);
         Button backButton = binding.backButton;
-        backButton.setOnClickListener(click -> finish());
+        backButton.setOnClickListener(click -> startActivity(homeIntent));
 
         Button saveButton = binding.saveButton;
         saveButton.setOnClickListener(click -> {
@@ -112,14 +121,13 @@ public class Sunrise_Results extends AppCompatActivity {
 
     private void saveToRoomDatabase(String latitude, String longitude, String sunriseTime, String sunsetTime) {
         ExecutorService databaseExecutor = Executors.newSingleThreadExecutor();
+        Sunrise_Data newData = new Sunrise_Data();
+        newData.setLatitude(latitude);
+        newData.setLongitude(longitude);
+        newData.setSunriseTime(sunriseTime);
+        newData.setSunsetTime(sunsetTime);
         databaseExecutor.execute(() -> {
             try {
-                Sunrise_Data newData = new Sunrise_Data();
-                newData.setLatitude(latitude);
-                newData.setLongitude(longitude);
-                newData.setSunriseTime(sunriseTime);
-                newData.setSunsetTime(sunsetTime);
-
                 SunriseApplication.getDatabase().sunDao().insert(newData);
 
                 // Display Toast message on UI thread

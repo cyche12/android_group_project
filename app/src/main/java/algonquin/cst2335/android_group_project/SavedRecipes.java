@@ -28,10 +28,18 @@ import java.util.List;
 
 import algonquin.cst2335.android_group_project.databinding.ActivityRecipeBinding;
 import algonquin.cst2335.android_group_project.databinding.ActivitySavedRecipesBinding;
-
+/**
+ * Purpose: Displays saved recipes
+ * Creation Date: 30/03/2024
+ *@author Gabriel Hubert
+ *@version 1.0
+ */
 public class SavedRecipes extends AppCompatActivity {
+    /** Allows to reference the Recycle View. */
     private RecyclerView recyclerView;
+    /** Sets an adapter for the Recycle View. */
     private SavedRecipeAdapter adapter;
+    /** Allows to interact with views. */
     ActivitySavedRecipesBinding binding;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -94,8 +102,13 @@ public class SavedRecipes extends AppCompatActivity {
 
 
     private class SavedRecipeAdapter extends RecyclerView.Adapter<SavedRecipeAdapter.ViewHolder> {
+        /** Creates an Array List for saved recipes. */
         private List<SavedRecipeReturn> savedRecipes = new ArrayList<>();
 
+        /**
+         * This function sets saved recipes.
+         * @param savedRecipes The saved recipe in the array.
+         */
         public void setSavedRecipes(List<SavedRecipeReturn> savedRecipes) {
             this.savedRecipes = savedRecipes;
             notifyDataSetChanged();
@@ -134,11 +147,19 @@ public class SavedRecipes extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
+            /** This holds the text for the recipe title. */
             TextView titleText;
+            /** This holds the text for the recipe id. */
             TextView idText;
+            /** This holds the image for the recipe image. */
             ImageView recipeImage;
+            /** This sets the context. */
             Context context;
 
+            /**
+             * This function adds the set content to the recycler view.
+             * @param itemView The item in the recycler view.
+             */
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 titleText = itemView.findViewById(R.id.savedTitle);
@@ -147,6 +168,11 @@ public class SavedRecipes extends AppCompatActivity {
                 context = itemView.getContext(); // Get the context of the item view
             }
 
+            /**
+             * This functions sets the title, id and image.
+             * @param savedRecipe The details of the recipe.
+             * @param position The position in the array of the saved recipe.
+             */
             public void bind(SavedRecipeReturn savedRecipe, int position) {
                 titleText.setText(savedRecipe.getTitle());
                 Picasso.get().load(savedRecipe.getImageUrl()).into(recipeImage);
