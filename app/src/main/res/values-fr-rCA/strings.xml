@@ -32,6 +32,7 @@
     <string name="dict_save_button_text">Enregistrer les définitions</string>
     <string name="dict_view_button_text">Afficher le terme de recherche</string>
     <string name="dict_dictionary">DICTIONNAIRE</string>
+    <string name="dict_title_text">Terme(s) de recherche enregistré(s)</string>
     <string name="dhelp">Aide</string>
     <string name="song_title">Titre</string>
     <string name="duration">Duration</string>
@@ -52,4 +53,3 @@
     <string name="recipe_help">Aide</string>
 
 </resources>
-

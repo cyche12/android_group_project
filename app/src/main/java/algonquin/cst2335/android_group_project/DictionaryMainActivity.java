@@ -92,6 +92,7 @@ public class DictionaryMainActivity extends AppCompatActivity {
                                                 String word = searchEditText.getText().toString();
                                                 if (!word.isEmpty()) {
                                                     currentSearchTerm = word;
+                                                    saveSearchTerm(currentSearchTerm);
                                                 }
                                                 dictionaryApiRequest.getDefinitions(word, new DictionaryApiRequest.ResponseListener() {
                                                     @Override
