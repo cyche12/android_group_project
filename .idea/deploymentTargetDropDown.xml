@@ -2,21 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="SongHelpTest">
-        <State />
-      </entry>
-      <entry key="SongSaveTest">
-        <State />
-      </entry>
-      <entry key="SongSearchTest">
-        <State />
-      </entry>
-      <entry key="SongdeleteTest">
-        <State />
-      </entry>
-      <entry key="SongdetailsTest">
-        <State />
-      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
@@ -32,6 +17,21 @@
           </targetSelectedWithDropDown>
           <timeTargetWasSelectedWithDropDown value="2024-03-28T21:26:42.512329600Z" />
         </State>
+      </entry>
+      <entry key="sunriseDataTestFavoriteToolbar">
+        <State />
+      </entry>
+      <entry key="sunriseMutalbleLiveDataTest">
+        <State />
+      </entry>
+      <entry key="sunriseSaveDataTest">
+        <State />
+      </entry>
+      <entry key="sunriseSnackbarTest">
+        <State />
+      </entry>
+      <entry key="sunriseToolbarHomeButtonTest">
+        <State />
       </entry>
     </value>
   </component>
