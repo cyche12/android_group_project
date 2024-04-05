@@ -38,13 +38,20 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * Activity for displaying search results of sunrise and sunset times based on the user's entered latitude and longitude.
+ * This class handles making an API call to fetch the sunrise and sunset times, displays those results and provides an option to save them into a local database.
+ */
 public class Sunrise_Results extends AppCompatActivity {
 
     private SunResultsAdapter resultsAdapter;
     private String currentSunrise, currentSunset;
     private String latitude, longitude;
 
-
+    /**
+     * Initializes the activity's UI, sets up the toolbar, and binds listeners to buttons.
+     * It also triggers fetching of sunrise and sunset data based on latitude and longitude received from the intent.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +69,9 @@ public class Sunrise_Results extends AppCompatActivity {
         resultsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         resultsAdapter = new SunResultsAdapter();
         resultsRecyclerView.setAdapter(resultsAdapter);
-        Intent homeIntent = new Intent(this, MainActivity.class);
+
         Button backButton = binding.backButton;
-        backButton.setOnClickListener(click -> startActivity(homeIntent));
+        backButton.setOnClickListener(click -> startActivity(new Intent(this, Sunrise_Search.class)));
 
         Button saveButton = binding.saveButton;
         saveButton.setOnClickListener(click -> {
@@ -76,14 +83,17 @@ public class Sunrise_Results extends AppCompatActivity {
         });
 
         Button historyButton = binding.historyButton;
-        historyButton.setOnClickListener(click -> {
-            Intent historyIntent = new Intent(this, SunriseHistory.class);
-            startActivity(historyIntent);
-        });
+        historyButton.setOnClickListener(click -> startActivity(new Intent(this, SunriseHistory.class)));
 
         fetchSunriseSunsetData(latitude, longitude);
     }
 
+    /**
+     * Fetches sunrise and sunset data from an external API and updates the display with the results.
+     * Makes a network call, parses the JSON response, and displays sunrise and sunset times.
+     * @param latitude Latitude for which to fetch sunrise and sunset times.
+     * @param longitude Longitude for which to fetch sunrise and sunset times.
+     */
     private void fetchSunriseSunsetData(String latitude, String longitude) {
         OkHttpClient client = new OkHttpClient();
         String url = "https://api.sunrise-sunset.org/json?lat=" + latitude + "&lng=" + longitude + "&date=today";
@@ -99,7 +109,6 @@ public class Sunrise_Results extends AppCompatActivity {
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (response.isSuccessful()) {
                     try {
-                        assert response.body() != null;
                         JSONObject jsonObject = new JSONObject(response.body().string());
                         JSONObject results = jsonObject.getJSONObject("results");
                         currentSunrise = results.getString("sunrise");
@@ -119,6 +128,13 @@ public class Sunrise_Results extends AppCompatActivity {
         });
     }
 
+    /**
+     * Saves the fetched sunrise and sunset times along with latitude and longitude to the local Room database.
+     * @param latitude Latitude of the location.
+     * @param longitude Longitude of the location.
+     * @param sunriseTime Sunrise time to be saved.
+     * @param sunsetTime Sunset time to be saved.
+     */
     private void saveToRoomDatabase(String latitude, String longitude, String sunriseTime, String sunsetTime) {
         ExecutorService databaseExecutor = Executors.newSingleThreadExecutor();
         Sunrise_Data newData = new Sunrise_Data();
@@ -126,26 +142,31 @@ public class Sunrise_Results extends AppCompatActivity {
         newData.setLongitude(longitude);
         newData.setSunriseTime(sunriseTime);
         newData.setSunsetTime(sunsetTime);
-        databaseExecutor.execute(() -> {
-            try {
-                SunriseApplication.getDatabase().sunDao().insert(newData);
 
-                // Display Toast message on UI thread
-                runOnUiThread(() -> Toast.makeText(Sunrise_Results.this, "Data saved successfully.", Toast.LENGTH_SHORT).show());
-            } catch (Exception e) {
-                e.printStackTrace();
-                // Display error Toast message on UI thread
-                runOnUiThread(() -> Toast.makeText(Sunrise_Results.this, "Error occurred while saving data.", Toast.LENGTH_SHORT).show());
-            }
+        databaseExecutor.execute(() -> {
+            SunriseApplication.getDatabase().sunDao().insert(newData);
+            runOnUiThread(() -> Toast.makeText(Sunrise_Results.this, "Data saved successfully.", Toast.LENGTH_SHORT).show());
         });
     }
 
+    /**
+     * Initialize the contents of the Sunrise classes options menu.
+     * @param menu Menu to be inflated.
+     * @return True for the menu to be displayed.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.sun_menu, menu);
         return true;
     }
 
+    /**
+     * Method for declaring what the menu items do.
+     * Option one is the favorites menu.
+     * Option two is the help icon.
+     * @param item The menu item that was clicked.
+     * @return False to allow normal menu processing to proceed, true to consume it here.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -153,13 +174,15 @@ public class Sunrise_Results extends AppCompatActivity {
             showHelpDialog();
             return true;
         } else if (id == R.id.sun_favorite) {
-            Intent historyIntent = new Intent(this, SunriseHistory.class);
-            startActivity(historyIntent);
+            startActivity(new Intent(this, SunriseHistory.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Shows a help dialog providing guidance on how to use the application when the help button is clicked on the toolbar.
+     */
     private void showHelpDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("How to Use")

@@ -19,11 +19,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+/**
+ * The SunriseHistory class displays the history of past sunrise and sunset searches.
+ * This class uses a RecyclerView to list the search results.
+ * It fetches the search data from the application's Room database and updates the display.
+ */
 public class SunriseHistory extends AppCompatActivity {
 
+    /**
+     * Adapter for the RecyclerView to display the history of searches.
+     */
     private SunHistoryAdapter historyAdapter;
 
+    /**
+     * Called when the activity is starting where most initialization happens:
+     * inflating the layout, setting up the RecyclerView, and loading the past search results.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +48,9 @@ public class SunriseHistory extends AppCompatActivity {
         loadAndDisplayPastSearchResults();
     }
 
+    /**
+     * Fetches past search results from the Room database and displays them in the RecyclerView using results from the RoomDatabase.
+     */
     private void loadAndDisplayPastSearchResults() {
         ExecutorService databaseExecutor = Executors.newSingleThreadExecutor();
         databaseExecutor.execute(() -> {

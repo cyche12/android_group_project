@@ -11,6 +11,9 @@ package algonquin.cst2335.android_group_project;
 import android.app.Application;
 import androidx.room.Room;
 
+/**
+ * The Sunrise Application class that initializes and provides the Room database to save results from past searches.
+ */
 public class SunriseApplication extends Application {
     private static SunDatabase database;
 
@@ -20,6 +23,10 @@ public class SunriseApplication extends Application {
         database = Room.databaseBuilder(getApplicationContext(), SunDatabase.class, "sunrise-database").build();
     }
 
+    /**
+     * Gets the singleton instance of the SunDatabase for use in classes that require the database.
+     * @return The instance of SunDatabase.
+     */
     public static SunDatabase getDatabase() {
         return database;
     }

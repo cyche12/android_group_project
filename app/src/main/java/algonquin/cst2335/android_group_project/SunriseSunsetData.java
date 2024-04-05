@@ -8,6 +8,10 @@
 
 package algonquin.cst2335.android_group_project;
 
+/**
+ * Represents sunrise and sunset data with time and the details returned from the website URL.
+ * This class stores the sunrise and sunset times as Strings so they can be called into classes or added to the database.
+ */
 public class SunriseSunsetData {
     private final String sunriseTime;
     private final String sunsetTime;

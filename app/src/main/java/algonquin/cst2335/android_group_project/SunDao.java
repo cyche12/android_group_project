@@ -19,7 +19,6 @@ public interface SunDao {
 
     /**
      * Inserts a new sunrise data entry into the database.
-     *
      * @param sunriseData The sunrise data to insert.
      */
     @Insert
@@ -27,7 +26,6 @@ public interface SunDao {
 
     /**
      * Retrieves all sunrise data entries stored in the database.
-     *
      * @return A list of all sunrise data entries.
      */
     @Query("SELECT * FROM sunrise_data")
